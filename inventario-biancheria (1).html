@@ -1,0 +1,1972 @@
+<title>Inventario biancheria AlpStay</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+<style>
+/* Grafica MP · AlpStay: testata centrata su velatura verde, titoli condensati maiuscoli, etichette spaziate tra filetti, spigoli vivi, verde bosco per l'azione principale. */
+:root{
+  --bg:#FFFFFF; --wash:#F3F7F3; --surface:#F7F9F7; --ink:#111311; --ink-2:#565A55; --ink-3:#737872;
+  --line:#CDD0C8; --line-soft:#E4E6E1;
+  --green:#1B4332; --green-hover:#245A43; --on-green:#FFFFFF; --link:#1B4332;
+  --sel:#111311; --on-sel:#FFFFFF; --on-sel-2:#B9BEB7; --logo:#6F736E;
+  --red:#A8261D; --red-bg:#FBECEA; --amber:#8A5300; --amber-bg:#FBF1DF; --ok:#1B4332; --ok-bg:#E4EEE7; --grey-bg:#F1F2EF; --band:#CFE0D4;
+  --f-display:"Bebas Neue","Oswald",Impact,"Arial Narrow",sans-serif;
+  --f-body:"DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-code:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111311; --wash:#18221B; --surface:#171A17; --ink:#EEF0EC; --ink-2:#BCC1BA; --ink-3:#959B94;
+  --line:#3B3F3A; --line-soft:#262925;
+  --green:#2F7552; --green-hover:#38855F; --on-green:#FFFFFF; --link:#86CFA4;
+  --sel:#EEF0EC; --on-sel:#111311; --on-sel-2:#4E524D; --logo:#959B94;
+  --red:#FF8F86; --red-bg:#3B1714; --amber:#F2B65C; --amber-bg:#3A2810; --ok:#86CFA4; --ok-bg:#16301F; --grey-bg:#1F221E; --band:#1E3A29;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#111311; --wash:#18221B; --surface:#171A17; --ink:#EEF0EC; --ink-2:#BCC1BA; --ink-3:#959B94;
+  --line:#3B3F3A; --line-soft:#262925;
+  --green:#2F7552; --green-hover:#38855F; --on-green:#FFFFFF; --link:#86CFA4;
+  --sel:#EEF0EC; --on-sel:#111311; --on-sel-2:#4E524D; --logo:#959B94;
+  --red:#FF8F86; --red-bg:#3B1714; --amber:#F2B65C; --amber-bg:#3A2810; --ok:#86CFA4; --ok-bg:#16301F; --grey-bg:#1F221E; --band:#1E3A29;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+
+/* testata */
+.testata{background:linear-gradient(180deg,var(--wash) 0,var(--bg) 320px)}
+.testata .wrap{padding-block:44px 0}
+h1{margin:0;text-align:center;font-family:var(--f-display);font-weight:400;font-size:clamp(52px,11vw,76px);line-height:.92;letter-spacing:.02em;text-transform:uppercase;color:var(--ink)}
+h1 span{display:block}
+.regola{display:flex;align-items:center;gap:20px;margin:0;font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+.regola::before,.regola::after{content:"";flex:1 1 0;height:1px;background:var(--line)}
+.regola--titolo{justify-content:center;margin:30px 0 34px;text-align:center}
+.regola--titolo::before,.regola--titolo::after{flex:0 1 80px}
+.etichetta-campo{display:block;margin-bottom:10px;font-size:14px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.controlli{display:grid;grid-template-columns:minmax(0,1fr);gap:22px}
+.case{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);background:var(--bg)}
+.case button{appearance:none;display:flex;flex-direction:column;justify-content:center;gap:1px;min-width:0;min-height:60px;padding:8px 12px;border:0;border-right:1px solid var(--line);background:transparent;color:var(--ink-2);text-align:center;cursor:pointer}
+.case button:last-child{border-right:0}
+.case .n{font-weight:500;font-size:16px;letter-spacing:.02em}
+.case .l{font-size:12px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.case button[aria-checked="true"]{background:var(--sel);color:var(--on-sel)}
+.case button[aria-checked="true"] .l{color:var(--on-sel-2)}
+#data{width:100%;height:60px;padding:0 14px;border:1px solid var(--line);border-radius:0;background:var(--bg);font-size:17px;font-variant-numeric:tabular-nums}
+.schede{display:flex;justify-content:center;gap:28px;margin-top:30px;border-bottom:1px solid var(--line-soft);overflow-x:auto}
+.schede button{appearance:none;padding:14px 0 12px;border:0;border-bottom:2px solid transparent;background:none;font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap;cursor:pointer}
+.schede button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+
+/* contenuto */
+main{padding-block:28px 8px}
+.banner{margin:0 0 20px;padding:14px 16px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);font-size:14px}
+.intestazione{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px 24px}
+.intestazione > div{min-width:0}
+h2{margin:0;font-family:var(--f-display);font-weight:400;font-size:40px;line-height:1;letter-spacing:.02em;text-transform:uppercase;color:var(--ink);text-wrap:balance}
+.sotto-titolo{margin:6px 0 0;max-width:62ch;color:var(--ink-3);font-size:15px}
+.quando{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.data-lunga{margin:0;font-weight:500;font-size:15px}
+.data-lunga::first-letter{text-transform:uppercase}
+.piccolo{margin:6px 0 0;font-size:14px;color:var(--ink-3)}
+.chip,.pill,.badge{display:inline-flex;align-items:center;gap:7px;padding:4px 9px;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.chip{border:1px solid var(--line);color:var(--ink-2)}
+.chip--bozza{border-color:var(--amber);background:var(--amber-bg);color:var(--amber)}
+.chip--salvato{border-color:var(--ok);background:var(--ok-bg);color:var(--ok)}
+.pill::before{content:"";width:6px;height:6px;background:currentColor}
+.pill--sotto{background:var(--red-bg);color:var(--red)}
+.pill--eccesso{background:var(--amber-bg);color:var(--amber)}
+.pill--ok{background:var(--ok-bg);color:var(--ok)}
+.pill--da-contare,.pill--senza-soglia{background:var(--grey-bg);color:var(--ink-2)}
+.badge{padding:1px 6px;font-size:10.5px;border:1px solid var(--line);color:var(--ink-2)}
+
+.callout{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 18px;margin-top:20px;padding:16px 18px;border:1px solid var(--green);background:var(--surface)}
+.callout p{margin:0;max-width:62ch;font-size:15px}
+
+.filtri{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 12px}
+.filtro{display:inline-flex;align-items:baseline;gap:8px;min-height:40px;padding:8px 14px;border:1px solid var(--line);background:var(--bg);font-size:14px;cursor:pointer}
+.filtro b{font-weight:700;font-variant-numeric:tabular-nums}
+.filtro[data-tono="sotto"] b{color:var(--red)}
+.filtro[data-tono="eccesso"] b{color:var(--amber)}
+.filtro[data-tono="ok"] b{color:var(--ok)}
+.filtro[aria-pressed="true"]{background:var(--sel);border-color:var(--sel);color:var(--on-sel)}
+.filtro[aria-pressed="true"] b{color:inherit}
+.cerca input{width:100%;height:52px;padding:0 14px;border:1px solid var(--line);border-radius:0;background:var(--bg)}
+
+h3{display:flex;align-items:center;gap:18px;margin:34px 0 4px;font-family:var(--f-body);font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+h3::before,h3::after{content:"";flex:1 1 0;height:1px;background:var(--line)}
+.conta-cat{letter-spacing:0;font-variant-numeric:tabular-nums}
+
+.riga{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"art art" "conta esito" "ind ind";gap:10px 14px;align-items:center;padding:16px 0 14px;border-bottom:1px solid var(--line-soft)}
+.art{grid-area:art;min-width:0}
+.desc{display:block;font-weight:500;font-size:17px;line-height:1.3}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;margin-top:3px;font-size:13px;color:var(--ink-3)}
+.codice{font-family:var(--f-code);font-size:12.5px;color:var(--ink-2);letter-spacing:.02em}
+.conta{grid-area:conta;display:flex;align-items:center;gap:8px}
+.qta{width:108px;height:52px;padding:0 12px;border:1px solid var(--line);border-radius:0;background:var(--bg);font-size:21px;font-weight:500;text-align:right;font-variant-numeric:tabular-nums}
+.qta::placeholder{color:var(--ink-3);font-weight:400}
+.qta:focus{border-color:var(--green)}
+.qta[aria-invalid="true"]{border-color:var(--red)}
+.unita{font-size:13px;color:var(--ink-3)}
+.esito{grid-area:esito;display:flex;flex-direction:column;align-items:flex-end;gap:4px;text-align:right}
+.scarto{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+.riga[data-stato="sotto"] .scarto{color:var(--red)}
+.riga[data-stato="eccesso"] .scarto{color:var(--amber)}
+.indicatore{grid-area:ind;position:relative;height:6px;background:var(--grey-bg)}
+.indicatore--vuoto{background:repeating-linear-gradient(90deg,var(--line-soft) 0 6px,transparent 6px 10px)}
+.banda{position:absolute;top:0;bottom:0;background:var(--band)}
+.segno{position:absolute;top:-5px;width:3px;height:16px;margin-left:-1.5px;background:var(--ink)}
+.segno--sotto{background:var(--red)}
+.segno--eccesso{background:var(--amber)}
+.segno--ok{background:var(--ok)}
+@media (prefers-reduced-motion:no-preference){.segno{transition:left .2s ease}}
+
+.riga--soglia{grid-template-columns:minmax(0,1fr) auto auto;grid-template-areas:"art art art" "vuoto min max" "err err err"}
+.riga--soglia .art{align-self:start}
+.campo-soglia{display:flex;flex-direction:column;gap:4px}
+.campo-soglia--min{grid-area:min}
+.campo-soglia--max{grid-area:max}
+.etichetta{font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.valore{min-width:80px;font-size:21px;font-weight:500;text-align:right;font-variant-numeric:tabular-nums}
+.qta--soglia{width:100px}
+.errore{grid-area:err;margin:0;font-size:13px;font-weight:700;color:var(--red)}
+
+.manca{margin-top:16px}
+.nota{display:flex;flex-direction:column;margin-top:30px}
+.nota label,.copia-manuale label{display:block;margin-bottom:10px;font-size:14px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:0;background:var(--bg);resize:vertical}
+.azioni{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-top:18px}
+.btn{appearance:none;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:10px 20px;border:1px solid var(--line);border-radius:0;background:var(--bg);color:var(--ink);font-weight:500;font-size:16px;cursor:pointer}
+.btn:hover{border-color:var(--ink-3)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn--primario{min-height:56px;padding-inline:30px;background:var(--green);border-color:var(--green);color:var(--on-green);font-size:18px}
+.btn--primario:hover{background:var(--green-hover);border-color:var(--green-hover)}
+.btn--scuro{background:var(--sel);border-color:var(--sel);color:var(--on-sel)}
+.btn--scuro:hover{border-color:var(--sel)}
+.btn--testo{min-height:40px;padding-inline:0;background:transparent;border-color:transparent;color:var(--link);text-decoration:underline;text-underline-offset:4px}
+.btn--testo:hover{border-color:transparent}
+.btn--link{appearance:none;padding:0;border:0;background:none;font-size:13px;font-weight:500;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.btn--pericolo,.btn--testo.btn--pericolo{color:var(--red)}
+.btn--pericolo-pieno{background:var(--red);border-color:var(--red);color:var(--bg)}
+.conferma{margin-top:16px;padding:16px 18px;border:1px solid var(--red);background:var(--red-bg)}
+.conferma p{margin:0;color:var(--ink)}
+.conferma--riga{margin-top:10px;padding:12px 14px}
+.conferma--riga p{font-size:14px}
+.copia-manuale{display:flex;flex-direction:column;margin-top:18px}
+.vuoto{padding:30px 0;color:var(--ink-2)}
+.vuoto p{margin:0 0 6px}
+
+.aggiungi{margin-top:24px;padding:20px;border:1px solid var(--line);background:var(--surface)}
+.aggiungi .piccolo{max-width:70ch}
+.aggiungi-testa{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.aggiungi-testa h3{flex:1;margin:0;color:var(--ink-2)}
+.aggiungi-testa h3::before{display:none}
+.griglia-modulo{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;margin-top:16px}
+.campo{display:flex;flex-direction:column;min-width:0}
+.campo label,.case-check legend{display:block;margin-bottom:8px;font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.campo input,.campo select{width:100%;height:56px;padding:0 14px;border:1px solid var(--line);border-radius:0;background:var(--bg);font-size:16px}
+#nuovo-codice{font-family:var(--f-code);text-transform:uppercase}
+#nuovo-codice::placeholder{text-transform:none}
+.case-check{display:flex;flex-wrap:wrap;gap:4px 22px;margin:16px 0 0;padding:0;border:0}
+.case-check legend{padding:0}
+.check{display:inline-flex;align-items:center;gap:10px;min-height:40px;font-size:15px;cursor:pointer}
+.check input{width:20px;height:20px;accent-color:var(--green)}
+
+.storico{list-style:none;margin:20px 0 0;padding:0}
+.voce{padding:18px 0;border-bottom:1px solid var(--line-soft)}
+.voce--corrente .voce-data{color:var(--link)}
+.voce-testa{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.voce-data{margin:0;font-weight:500;font-size:17px}
+.voce-data::first-letter{text-transform:uppercase}
+.voce-pill{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;margin-top:10px}
+.contati{font-size:13px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.voce-meta{margin:8px 0 0;font-size:13px;color:var(--ink-3)}
+.voce-nota{margin:8px 0 0;padding-left:12px;border-left:2px solid var(--line);font-size:14px;color:var(--ink-2);white-space:pre-wrap}
+
+/* firma */
+.firma{display:flex;flex-direction:column;align-items:center;gap:14px;padding-block:44px 32px}
+.firma-riga{width:64px;height:1px;background:var(--line)}
+.monogramma{width:70px;height:50px;background:var(--logo);-webkit-mask:url("data:image/png;base64,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") center/contain no-repeat;mask:url("data:image/png;base64,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") center/contain no-repeat}
+.firma-testo{font-size:15px;font-weight:500;letter-spacing:.2em;color:var(--logo)}
+
+/* barra azioni */
+.barra{position:sticky;bottom:0;z-index:5;border-top:1px solid var(--line-soft);background:var(--bg)}
+.barra-dentro{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 18px;padding-top:12px;padding-bottom:max(12px,env(safe-area-inset-bottom,0px))}
+.info{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1 1 220px;font-size:14px}
+.barra-dentro > .btn{margin-left:auto}
+.riassunto{color:var(--ink-2);font-variant-numeric:tabular-nums}
+.avviso{font-weight:500}
+.avviso--ok{color:var(--ok)}
+.avviso--errore{color:var(--red)}
+.avviso--info{color:var(--ink-2)}
+
+@media (max-width:519px){
+  .barra-dentro > .btn{flex:1 1 100%}
+  .schede{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;overflow:visible}
+  .schede button{padding-inline:4px;font-size:12px;letter-spacing:.08em;white-space:normal;text-align:center}
+  .regola--titolo{gap:14px;letter-spacing:.14em}
+  .regola--titolo::before,.regola--titolo::after{flex-basis:36px}
+}
+@media (min-width:720px){
+  .controlli{grid-template-columns:minmax(0,1fr) 230px;align-items:end}
+  .riga{grid-template-columns:minmax(0,1fr) 160px 210px;grid-template-areas:"art conta esito" "ind ind ind"}
+  .riga--soglia{grid-template-columns:minmax(0,1fr) 120px 120px;grid-template-areas:"art min max" "err err err"}
+  .conta{justify-content:flex-end}
+  .griglia-modulo{grid-template-columns:200px minmax(0,1fr) 200px}
+}
+</style>
+
+<header class="testata">
+  <div class="wrap">
+    <h1><span>Inventario</span><span>biancheria</span></h1>
+    <p class="regola regola--titolo">Noleggio Servizi Italia</p>
+    <div class="controlli">
+      <div>
+        <span class="etichetta-campo" id="etichetta-casa">Struttura</span>
+        <div class="case" id="case" role="radiogroup" aria-labelledby="etichetta-casa"></div>
+      </div>
+      <div>
+        <label class="etichetta-campo" for="data">Data inventario</label>
+        <input type="date" id="data">
+      </div>
+    </div>
+    <nav class="schede" role="tablist" aria-label="Sezioni">
+      <button type="button" role="tab" id="tab-conteggio" data-vista="conteggio" aria-selected="true">Conteggio</button>
+      <button type="button" role="tab" id="tab-storico" data-vista="storico" aria-selected="false">Storico</button>
+      <button type="button" role="tab" id="tab-soglie" data-vista="soglie" aria-selected="false">Articoli e soglie</button>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <p class="banner" id="banner" hidden></p>
+  <section id="vista-conteggio" aria-labelledby="tab-conteggio"></section>
+  <section id="vista-storico" aria-labelledby="tab-storico" hidden></section>
+  <section id="vista-soglie" aria-labelledby="tab-soglie" hidden></section>
+</main>
+<div class="firma" role="img" aria-label="MP · AlpStay">
+  <span class="firma-riga"></span>
+  <span class="monogramma"></span>
+  <span class="firma-testo">MP · ALPSTAY</span>
+</div>
+<footer class="barra" id="barra"></footer>
+<script>
+"use strict";
+(() => {
+  // src/hotels.ts
+  var HOTELS = [
+    {
+      id: "acadia",
+      nome: "Hotel Acadia",
+      breve: "Acadia",
+      localita: "Selva Gardena",
+      intestazioneFattura: "Hotel Acadia Beauty & Relax",
+      codiceCliente: "202228"
+    },
+    {
+      id: "hartmann",
+      nome: "Chalet Hotel Hartmann",
+      breve: "Hartmann",
+      localita: "Ortisei",
+      intestazioneFattura: "Hotel Hartmann Saslong GmbH/Srl",
+      codiceCliente: "202017"
+    },
+    {
+      id: "saslong",
+      nome: "Smart Hotel Saslong",
+      breve: "Saslong",
+      localita: "S. Cristina",
+      intestazioneFattura: "Smart Hotel Saslong",
+      codiceCliente: "202336"
+    }
+  ];
+  function isHotelId(v) {
+    return v === "acadia" || v === "hartmann" || v === "saslong";
+  }
+  function hotelPerId(id) {
+    const h = HOTELS.find((x) => x.id === id);
+    if (!h) throw new Error(`Casa sconosciuta: ${id}`);
+    return h;
+  }
+
+  // src/catalogo.ts
+  var ARTICOLI = [
+    { codice: "A000001", descrizione: "Lenzuola 2 piazze", descrizioneFornitore: "LENZUOLA 2P", categoria: "letto" },
+    { codice: "A000017", descrizione: "Lenzuola 2 piazze jersey con elastico", descrizioneFornitore: "LENZUOLA 2P JERSEY CON ELAST.", categoria: "letto" },
+    { codice: "A000018", descrizione: "Lenzuola 1 piazza jersey con elastico", descrizioneFornitore: "LENZUOLA 1P JERSEY CON ELAST.", categoria: "letto" },
+    { codice: "A000023", descrizione: "Lenzuola 2 piazze jersey 200\xD7210", descrizioneFornitore: "LENZUOLA 2P JERSEY 200X210", categoria: "letto" },
+    { codice: "A000024", descrizione: "Lenzuola 1 piazza jersey 100\xD7210", descrizioneFornitore: "LENZUOLA 1P JERSEY 100X210", categoria: "letto" },
+    { codice: "A000037", descrizione: "Piumini Simone", descrizioneFornitore: "PIUMINI SIMONE", categoria: "letto" },
+    { codice: "A000063", descrizione: "Federe Arianna grandi", descrizioneFornitore: "FEDERE ARIANNA GRANDI", categoria: "letto" },
+    { codice: "A000079", descrizione: "Federe Royal Luxor 80\xD780", descrizioneFornitore: "FEDERE ROYAL LUXOR 80X80", categoria: "letto" },
+    { codice: "A000108", descrizione: "Asciugamani spugna bianca", descrizioneFornitore: "ASCIUGAMANI SPUGNA BIANCA", categoria: "bagno" },
+    { codice: "A000109", descrizione: "Bidet spugna bianca", descrizioneFornitore: "BIDET SPUGNA BIANCA", categoria: "bagno" },
+    { codice: "A000110", descrizione: "Bagni spugna bianca", descrizioneFornitore: "BAGNI SPUGNA BIANCA", categoria: "bagno" },
+    { codice: "A000111", descrizione: "Scendibagno spugna bianca", descrizioneFornitore: "SCENDIBAGNO SPUGNA BIANCA", categoria: "bagno" },
+    { codice: "A000141", descrizione: "Accappatoio L Luxor", descrizioneFornitore: "ACCAPPATOIO L LUXOR", categoria: "bagno" },
+    { codice: "A000142", descrizione: "Accappatoio XL Luxor", descrizioneFornitore: "ACCAPPATOIO XL LUXOR", categoria: "bagno" },
+    { codice: "A000162", descrizione: "Bagni spugna moka", descrizioneFornitore: "BAGNI SPUGNA MOKA", categoria: "bagno" },
+    { codice: "A000248", descrizione: "Tovaglie 6 posti bianco spillo", descrizioneFornitore: "TOVAGLIE 6P BIANCO SPILLO", categoria: "sala" },
+    { codice: "A000249", descrizione: "Tovaglie 4 posti bianco spillo", descrizioneFornitore: "TOVAGLIE 4P BIANCO SPILLO", categoria: "sala" },
+    { codice: "A000253", descrizione: "Tovaglioli bianco spillo", descrizioneFornitore: "TOVAGLIOLI BIANCO SPILLO", categoria: "sala" }
+  ];
+  var CONSEGNE_SET_2026 = {
+    acadia: [
+      { codice: "A000001", pezzi: 10, consegne: 1 },
+      { codice: "A000017", pezzi: 285, consegne: 8 },
+      { codice: "A000018", pezzi: 115, consegne: 9 },
+      { codice: "A000037", pezzi: 545, consegne: 9 },
+      { codice: "A000063", pezzi: 1150, consegne: 9 },
+      { codice: "A000079", pezzi: 1025, consegne: 9 },
+      { codice: "A000108", pezzi: 580, consegne: 9 },
+      { codice: "A000109", pezzi: 560, consegne: 9 },
+      { codice: "A000111", pezzi: 590, consegne: 9 },
+      { codice: "A000141", pezzi: 141, consegne: 9 },
+      { codice: "A000142", pezzi: 112, consegne: 9 },
+      { codice: "A000162", pezzi: 921, consegne: 9 },
+      { codice: "A000248", pezzi: 10, consegne: 1 },
+      { codice: "A000249", pezzi: 30, consegne: 3 },
+      { codice: "A000253", pezzi: 1650, consegne: 8 }
+    ],
+    hartmann: [
+      { codice: "A000001", pezzi: 10, consegne: 1 },
+      { codice: "A000023", pezzi: 111, consegne: 9 },
+      { codice: "A000024", pezzi: 15, consegne: 3 },
+      { codice: "A000037", pezzi: 275, consegne: 9 },
+      { codice: "A000063", pezzi: 500, consegne: 9 },
+      { codice: "A000079", pezzi: 225, consegne: 8 },
+      { codice: "A000108", pezzi: 480, consegne: 9 },
+      { codice: "A000109", pezzi: 560, consegne: 9 },
+      { codice: "A000110", pezzi: 445, consegne: 9 },
+      { codice: "A000111", pezzi: 270, consegne: 9 },
+      { codice: "A000141", pezzi: 63, consegne: 9 },
+      { codice: "A000142", pezzi: 39, consegne: 9 },
+      { codice: "A000162", pezzi: 126, consegne: 9 },
+      { codice: "A000248", pezzi: 20, consegne: 2 },
+      { codice: "A000249", pezzi: 190, consegne: 9 },
+      { codice: "A000253", pezzi: 550, consegne: 6 }
+    ],
+    saslong: [
+      { codice: "A000001", pezzi: 10, consegne: 1 },
+      { codice: "A000023", pezzi: 505, consegne: 10 },
+      { codice: "A000024", pezzi: 675, consegne: 8 },
+      { codice: "A000037", pezzi: 1740, consegne: 8 },
+      { codice: "A000063", pezzi: 2050, consegne: 8 },
+      { codice: "A000108", pezzi: 2810, consegne: 8 },
+      { codice: "A000110", pezzi: 2880, consegne: 8 },
+      { codice: "A000111", pezzi: 1290, consegne: 8 }
+    ]
+  };
+
+  // src/logica.ts
+  var ORDINE_CATEGORIE = ["letto", "bagno", "sala", "altro"];
+  var ETICHETTA_CATEGORIA = {
+    letto: "Letto",
+    bagno: "Bagno",
+    sala: "Sala e ristorante",
+    altro: "Altro"
+  };
+  function isCategoria(v) {
+    return v === "letto" || v === "bagno" || v === "sala" || v === "altro";
+  }
+  var CODICE_VALIDO = /^[A-Z0-9][A-Z0-9._-]{0,29}$/;
+  function articoloDaCatalogo(codice) {
+    return ARTICOLI.find((a) => a.codice === codice);
+  }
+  function codiceInternoLibero(inUso) {
+    const usati = new Set(inUso);
+    for (let i = 1; i < 1e4; i++) {
+      const c = `INT-${String(i).padStart(3, "0")}`;
+      if (!usati.has(c)) return c;
+    }
+    throw new Error("Codici interni esauriti");
+  }
+  var ETICHETTA_STATO = {
+    sotto: "Sotto minimo",
+    eccesso: "In eccesso",
+    ok: "Nella norma",
+    "da-contare": "Da contare",
+    "senza-soglia": "Senza soglia"
+  };
+  function articoliPerHotel(hotel, aggiunti = []) {
+    const codici = new Set(CONSEGNE_SET_2026[hotel].map((r) => r.codice));
+    const daFattura = ARTICOLI.filter((a) => codici.has(a.codice));
+    const extra = aggiunti.filter((a) => a.hotel === hotel && !codici.has(a.codice)).map(({ codice, descrizione, descrizioneFornitore, categoria }) => ({
+      codice,
+      descrizione,
+      descrizioneFornitore,
+      categoria,
+      aggiunto: true
+    }));
+    return [...daFattura, ...extra].sort(
+      (a, b) => ORDINE_CATEGORIE.indexOf(a.categoria) - ORDINE_CATEGORIE.indexOf(b.categoria) || a.codice.localeCompare(b.codice)
+    );
+  }
+  function riferimento(hotel, codice) {
+    return CONSEGNE_SET_2026[hotel].find((r) => r.codice === codice);
+  }
+  function parseIntero(raw) {
+    const cifre = raw.replace(/\D/g, "");
+    if (cifre === "") return null;
+    const n = Number.parseInt(cifre, 10);
+    return Number.isFinite(n) ? Math.min(n, 999999) : null;
+  }
+  function valuta(qta, soglia) {
+    if (qta === null) return { stato: "da-contare", scarto: null };
+    const min = soglia?.min ?? null;
+    const max = soglia?.max ?? null;
+    if (min === null && max === null) return { stato: "senza-soglia", scarto: null };
+    if (min !== null && qta < min) return { stato: "sotto", scarto: qta - min };
+    if (max !== null && qta > max) return { stato: "eccesso", scarto: qta - max };
+    return { stato: "ok", scarto: null };
+  }
+  function contaStati(valutazioni) {
+    const out = { sotto: 0, eccesso: 0, ok: 0, "da-contare": 0, "senza-soglia": 0 };
+    for (const v of valutazioni) out[v.stato] += 1;
+    return out;
+  }
+  function validaSoglia(minRaw, maxRaw) {
+    const min = parseIntero(minRaw);
+    const max = parseIntero(maxRaw);
+    if (min !== null && max !== null && max < min) {
+      return { soglia: { min, max }, errore: "Il massimo deve essere uguale o superiore al minimo." };
+    }
+    return { soglia: { min, max }, errore: null };
+  }
+  function scalaIndicatore(qta, soglia) {
+    const min = soglia?.min ?? null;
+    const max = soglia?.max ?? null;
+    if (min === null && max === null) return null;
+    const top = Math.max(max ?? 0, (min ?? 0) * 1.6, qta ?? 0) * 1.15 || 1;
+    const da = min ?? 0;
+    const a = max ?? top;
+    return {
+      banda: { da: da / top * 100, a: a / top * 100 },
+      segno: qta === null ? null : Math.min(qta / top * 100, 100)
+    };
+  }
+  var pad2 = (n) => String(n).padStart(2, "0");
+  function oggiISO(d = /* @__PURE__ */ new Date()) {
+    return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+  }
+  function isDataISO(v) {
+    return typeof v === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v);
+  }
+  function dataLunga(iso) {
+    const [y, m, g] = iso.split("-").map(Number);
+    const d = new Date(y, m - 1, g);
+    return d.toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+  }
+  function dataBreve(iso) {
+    const [y, m, g] = iso.split("-");
+    return `${g}/${m}/${y}`;
+  }
+  function dataOra(ts) {
+    const d = new Date(ts);
+    if (Number.isNaN(d.getTime())) return "";
+    const giorno = d.toLocaleDateString("it-IT", { day: "2-digit", month: "2-digit" });
+    const ora = d.toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" });
+    return `${giorno} alle ${ora}`;
+  }
+  var numero = (n) => n.toLocaleString("it-IT");
+  function cellaCsv(v) {
+    if (v === null) return "";
+    const s = String(v);
+    return /[;"\r\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+  }
+  function csvInventario(nomeHotel, data, righe) {
+    const intestazione = [
+      "Struttura",
+      "Data",
+      "Codice",
+      "Articolo",
+      "Descrizione fornitore",
+      "Categoria",
+      "Quantit\xE0",
+      "Minimo",
+      "Massimo",
+      "Stato",
+      "Scarto"
+    ];
+    const corpo = righe.map((r) => [
+      nomeHotel,
+      dataBreve(data),
+      r.articolo.codice,
+      r.articolo.descrizione,
+      r.articolo.descrizioneFornitore,
+      ETICHETTA_CATEGORIA[r.articolo.categoria],
+      r.qta,
+      r.soglia?.min ?? null,
+      r.soglia?.max ?? null,
+      ETICHETTA_STATO[r.valutazione.stato],
+      r.valutazione.scarto
+    ]);
+    return "\uFEFF" + [intestazione, ...corpo].map((r) => r.map(cellaCsv).join(";")).join("\r\n");
+  }
+  function testoRiepilogo(nomeHotel, data, righe) {
+    const sotto = righe.filter((r) => r.valutazione.stato === "sotto");
+    const eccesso = righe.filter((r) => r.valutazione.stato === "eccesso");
+    const daContare = righe.filter((r) => r.valutazione.stato === "da-contare");
+    const out = [`Inventario biancheria \xB7 ${nomeHotel} \xB7 ${dataBreve(data)}`, ""];
+    if (sotto.length) {
+      out.push(`Sotto il minimo (${sotto.length}):`);
+      for (const r of sotto) {
+        out.push(
+          `- ${r.articolo.codice} ${r.articolo.descrizioneFornitore}: ${numero(r.qta ?? 0)} pz, minimo ${numero(
+            r.soglia?.min ?? 0
+          )}, mancano ${numero(Math.abs(r.valutazione.scarto ?? 0))}`
+        );
+      }
+      out.push("");
+    }
+    if (eccesso.length) {
+      out.push(`In eccesso (${eccesso.length}):`);
+      for (const r of eccesso) {
+        out.push(
+          `- ${r.articolo.codice} ${r.articolo.descrizioneFornitore}: ${numero(r.qta ?? 0)} pz, massimo ${numero(
+            r.soglia?.max ?? 0
+          )}, ${numero(r.valutazione.scarto ?? 0)} in pi\xF9`
+        );
+      }
+      out.push("");
+    }
+    if (!sotto.length && !eccesso.length) {
+      out.push("Nessun articolo sotto il minimo o in eccesso.", "");
+    }
+    if (daContare.length) {
+      out.push(`Non ancora contati: ${daContare.map((r) => r.articolo.codice).join(", ")}`);
+    }
+    return out.join("\n").trim();
+  }
+
+  // src/app.ts
+  var moduloVuoto = (hotel) => ({
+    codice: "",
+    descrizione: "",
+    categoria: "letto",
+    case: [hotel],
+    descrizioneAutomatica: false
+  });
+  var CHIAVE_HOTEL = "inv-biancheria:hotel";
+  var chiaveBozza = (hotel, data) => `inv-biancheria:bozza:${hotel}:${data}`;
+  var locale = {
+    leggi(k) {
+      try {
+        return localStorage.getItem(k);
+      } catch {
+        return null;
+      }
+    },
+    scrivi(k, v) {
+      try {
+        localStorage.setItem(k, v);
+      } catch {
+      }
+    },
+    rimuovi(k) {
+      try {
+        localStorage.removeItem(k);
+      } catch {
+      }
+    }
+  };
+  function leggiBozza(hotel, data) {
+    const raw = locale.leggi(chiaveBozza(hotel, data));
+    if (!raw) return null;
+    try {
+      const o = JSON.parse(raw);
+      if (!o || typeof o !== "object" || typeof o.qta !== "object" || o.qta === null) return null;
+      const qta = {};
+      for (const [k, v] of Object.entries(o.qta)) qta[k] = typeof v === "number" && v >= 0 ? v : null;
+      return { qta, nota: typeof o.nota === "string" ? o.nota : "", ts: typeof o.ts === "number" ? o.ts : 0 };
+    } catch {
+      return null;
+    }
+  }
+  var timerBozza;
+  function salvaBozzaPresto() {
+    window.clearTimeout(timerBozza);
+    const { hotel, data } = S;
+    const bozza = { qta: { ...S.qta }, nota: S.nota, ts: Date.now() };
+    timerBozza = window.setTimeout(() => locale.scrivi(chiaveBozza(hotel, data), JSON.stringify(bozza)), 300);
+  }
+  function cancellaBozza(hotel, data) {
+    window.clearTimeout(timerBozza);
+    locale.rimuovi(chiaveBozza(hotel, data));
+  }
+  var hotelIniziale = locale.leggi(CHIAVE_HOTEL);
+  var S = {
+    hotel: isHotelId(hotelIniziale) ? hotelIniziale : "acadia",
+    data: oggiISO(),
+    vista: "conteggio",
+    filtro: "tutti",
+    ricerca: "",
+    qta: {},
+    nota: "",
+    modificato: false,
+    soglie: { acadia: null, hartmann: null, saslong: null },
+    inventari: [],
+    inventariCaricati: false,
+    db: null,
+    dbStato: "attesa",
+    user: null,
+    downloads: null,
+    userId: null,
+    puoSoglie: false,
+    solaLettura: false,
+    campiSoglie: { acadia: {}, hartmann: {}, saslong: {} },
+    soglieModificate: { acadia: false, hartmann: false, saslong: false },
+    salvando: false,
+    avviso: null,
+    confermaElimina: false,
+    testoCopia: null,
+    aggiunti: [],
+    moduloAperto: false,
+    modulo: moduloVuoto(isHotelId(hotelIniziale) ? hotelIniziale : "acadia"),
+    erroreModulo: null,
+    daRimuovere: null,
+    focusDopo: null
+  };
+  function articoliCasa(hotel) {
+    return articoliPerHotel(hotel, S.aggiunti);
+  }
+  function soglieCorrenti(hotel) {
+    return S.soglie[hotel]?.righe ?? {};
+  }
+  function inventarioSalvato(hotel, data) {
+    return S.inventari.find((i) => i.hotel === hotel && i.data === data);
+  }
+  function caricaContesto() {
+    S.confermaElimina = false;
+    S.testoCopia = null;
+    const bozza = leggiBozza(S.hotel, S.data);
+    if (bozza) {
+      S.qta = bozza.qta;
+      S.nota = bozza.nota;
+      S.modificato = true;
+      return;
+    }
+    caricaDaSalvato();
+  }
+  function caricaDaSalvato() {
+    const doc = inventarioSalvato(S.hotel, S.data);
+    const qta = {};
+    if (doc) for (const [cod, r] of Object.entries(doc.righe)) qta[cod] = r.qta;
+    S.qta = qta;
+    S.nota = doc?.nota ?? "";
+    S.modificato = false;
+  }
+  function campiDaSoglie(hotel) {
+    const righe = soglieCorrenti(hotel);
+    const out = {};
+    for (const a of articoliCasa(hotel)) {
+      const s = righe[a.codice];
+      out[a.codice] = {
+        min: s?.min != null ? String(s.min) : "",
+        max: s?.max != null ? String(s.max) : ""
+      };
+    }
+    return out;
+  }
+  function righeCorrenti() {
+    const soglie = soglieCorrenti(S.hotel);
+    return articoliCasa(S.hotel).map((articolo) => {
+      const qta = S.qta[articolo.codice] ?? null;
+      const soglia = soglie[articolo.codice];
+      return { articolo, qta, soglia, valutazione: valuta(qta, soglia) };
+    });
+  }
+  var numONull = (v) => typeof v === "number" && Number.isFinite(v) && v >= 0 ? v : null;
+  function leggiInventario(id, raw) {
+    if (!raw || !isHotelId(raw.hotel) || !isDataISO(raw.data)) return null;
+    const righe = {};
+    const righeRaw = raw.righe;
+    if (righeRaw && typeof righeRaw === "object") {
+      for (const [cod, r] of Object.entries(righeRaw)) {
+        if (r && typeof r === "object") {
+          const o = r;
+          righe[cod] = { qta: numONull(o.qta), min: numONull(o.min), max: numONull(o.max) };
+        }
+      }
+    }
+    return {
+      id,
+      hotel: raw.hotel,
+      data: raw.data,
+      righe,
+      nota: typeof raw.nota === "string" ? raw.nota : "",
+      salvatoIl: typeof raw.salvatoIl === "string" ? raw.salvatoIl : "",
+      salvatoDa: typeof raw.salvatoDa === "string" ? raw.salvatoDa : null
+    };
+  }
+  function leggiSoglie(raw) {
+    if (!raw || !isHotelId(raw.hotel)) return null;
+    const righe = {};
+    if (raw.righe && typeof raw.righe === "object") {
+      for (const [cod, r] of Object.entries(raw.righe)) {
+        if (r && typeof r === "object") {
+          const o = r;
+          righe[cod] = { min: numONull(o.min), max: numONull(o.max) };
+        }
+      }
+    }
+    return {
+      hotel: raw.hotel,
+      righe,
+      aggiornatoIl: typeof raw.aggiornatoIl === "string" ? raw.aggiornatoIl : "",
+      aggiornatoDa: typeof raw.aggiornatoDa === "string" ? raw.aggiornatoDa : null
+    };
+  }
+  function leggiArticoloAggiunto(id, raw) {
+    if (!raw || !isHotelId(raw.hotel) || typeof raw.codice !== "string" || !CODICE_VALIDO.test(raw.codice)) return null;
+    if (id !== `${raw.hotel}_${raw.codice}`) return null;
+    if (typeof raw.descrizione !== "string" || !raw.descrizione.trim()) return null;
+    const descrizione = raw.descrizione.trim().slice(0, 80);
+    return {
+      hotel: raw.hotel,
+      codice: raw.codice,
+      descrizione,
+      descrizioneFornitore: typeof raw.descrizioneFornitore === "string" && raw.descrizioneFornitore.trim() ? raw.descrizioneFornitore.trim().slice(0, 80) : descrizione.toUpperCase(),
+      categoria: isCategoria(raw.categoria) ? raw.categoria : "altro",
+      aggiunto: true,
+      creatoIl: typeof raw.creatoIl === "string" ? raw.creatoIl : "",
+      creatoDa: typeof raw.creatoDa === "string" ? raw.creatoDa : null
+    };
+  }
+  function codiceErrore(e) {
+    return e && typeof e === "object" && "code" in e ? String(e.code) : "";
+  }
+  function testoErrore(e, cosa) {
+    switch (codiceErrore(e)) {
+      case "invalid_argument":
+        if (cosa === "soglie") return "Le soglie possono essere modificate solo da chi ha accesso come Editor.";
+        if (cosa === "articoli") return "Gli articoli possono essere aggiunti o rimossi solo da chi ha accesso come Editor.";
+        S.solaLettura = true;
+        return "Il tuo accesso a questa pagina \xE8 in sola lettura. Chiedi al titolare l'accesso come Contributor.";
+      case "quota_exceeded":
+        return "L'archivio della piattaforma \xE8 pieno. Elimina qualche inventario vecchio e riprova.";
+      case "resource_exhausted":
+        return "Troppe richieste in poco tempo. Attendi qualche secondo e riprova.";
+      case "revoked":
+        return "L'accesso a questa pagina \xE8 cambiato. Ricarica la pagina.";
+      default:
+        return cosa === "inventario" ? "Salvataggio non riuscito per un problema di connessione. Riprova: i numeri restano come bozza su questo dispositivo." : "Operazione non riuscita per un problema di connessione. Riprova tra poco.";
+    }
+  }
+  var attesa = (ms) => new Promise((r) => window.setTimeout(r, ms));
+  async function conRitento(f) {
+    try {
+      return await f();
+    } catch (e) {
+      if (codiceErrore(e) !== "unavailable") throw e;
+      await attesa(500 + Math.random() * 700);
+      return await f();
+    }
+  }
+  var comeRecord = (x) => x;
+  function el(tag, attr = {}, ...figli) {
+    const e = document.createElement(tag);
+    for (const [k, v] of Object.entries(attr)) {
+      if (v === void 0 || v === false) continue;
+      if (k === "class") e.className = String(v);
+      else if (k === "text") e.textContent = String(v);
+      else if (v === true) e.setAttribute(k, "");
+      else e.setAttribute(k, String(v));
+    }
+    for (const f of figli) if (f !== null && f !== void 0 && f !== false) e.append(f);
+    return e;
+  }
+  function iconaSalva() {
+    const ns = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(ns, "svg");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("fill", "none");
+    svg.setAttribute("stroke", "currentColor");
+    svg.setAttribute("stroke-width", "1.6");
+    svg.setAttribute("stroke-linecap", "round");
+    svg.setAttribute("stroke-linejoin", "round");
+    svg.setAttribute("aria-hidden", "true");
+    for (const d of ["M6 4h9l3 3v13H6z", "M9 13l2.2 2.2L15.5 11"]) {
+      const path = document.createElementNS(ns, "path");
+      path.setAttribute("d", d);
+      svg.append(path);
+    }
+    return svg;
+  }
+  function $(id) {
+    const n = document.getElementById(id);
+    if (!n) throw new Error(`Elemento mancante: #${id}`);
+    return n;
+  }
+  function conFocus(fn) {
+    const attivo = document.activeElement;
+    const id = attivo instanceof HTMLElement ? attivo.id : "";
+    let inizio = null;
+    let fine = null;
+    if (attivo instanceof HTMLInputElement || attivo instanceof HTMLTextAreaElement) {
+      try {
+        inizio = attivo.selectionStart;
+        fine = attivo.selectionEnd;
+      } catch {
+      }
+    }
+    fn();
+    if (!id) return;
+    const nuovo = document.getElementById(id);
+    if (nuovo && nuovo !== attivo) {
+      nuovo.focus({ preventScroll: true });
+      if ((nuovo instanceof HTMLInputElement || nuovo instanceof HTMLTextAreaElement) && inizio !== null) {
+        try {
+          nuovo.setSelectionRange(inizio, fine ?? inizio);
+        } catch {
+        }
+      }
+    }
+  }
+  function renderTestata() {
+    for (const b of document.querySelectorAll("[data-hotel]")) {
+      b.setAttribute("aria-checked", String(b.dataset.hotel === S.hotel));
+    }
+    const data = $("data");
+    if (data.value !== S.data) data.value = S.data;
+    for (const b of document.querySelectorAll("[data-vista]")) {
+      b.setAttribute("aria-selected", String(b.dataset.vista === S.vista));
+    }
+    $("vista-conteggio").hidden = S.vista !== "conteggio";
+    $("vista-storico").hidden = S.vista !== "storico";
+    $("vista-soglie").hidden = S.vista !== "soglie";
+  }
+  function renderBanner() {
+    const b = $("banner");
+    let testo = "";
+    if (S.dbStato === "assente") {
+      testo = "Questa vista non \xE8 collegata all'archivio: puoi contare, ma salvataggio e storico non sono disponibili. I numeri restano come bozza su questo dispositivo.";
+    } else if (S.solaLettura) {
+      testo = "Hai accesso in sola lettura: puoi consultare inventari e soglie, ma non salvarli.";
+    }
+    b.hidden = !testo;
+    b.textContent = testo;
+  }
+  function testoSoglia(s) {
+    const parti = [];
+    if (s?.min != null) parti.push(`min ${numero(s.min)}`);
+    if (s?.max != null) parti.push(`max ${numero(s.max)}`);
+    return parti.length ? parti.join(" \xB7 ") : "soglie non impostate";
+  }
+  function nodoEsito(codice, v) {
+    let dettaglio = "";
+    if (v.stato === "sotto" && v.scarto !== null) dettaglio = `mancano ${numero(Math.abs(v.scarto))}`;
+    if (v.stato === "eccesso" && v.scarto !== null) dettaglio = `${numero(v.scarto)} oltre il massimo`;
+    return el(
+      "div",
+      { class: "esito", id: `esito-${codice}`, "aria-live": "polite" },
+      el("span", { class: `pill pill--${v.stato}`, text: ETICHETTA_STATO[v.stato] }),
+      dettaglio ? el("span", { class: "scarto", text: dettaglio }) : null
+    );
+  }
+  function nodoIndicatore(qta, s, stato) {
+    const scala = scalaIndicatore(qta, s);
+    const contenitore = el("div", { class: "indicatore", "aria-hidden": "true" });
+    if (!scala) {
+      contenitore.classList.add("indicatore--vuoto");
+      return contenitore;
+    }
+    const banda = el("span", { class: "banda" });
+    banda.style.left = `${scala.banda.da}%`;
+    banda.style.width = `${Math.max(scala.banda.a - scala.banda.da, 0.8)}%`;
+    contenitore.append(banda);
+    if (scala.segno !== null) {
+      const segno = el("span", { class: `segno segno--${stato}` });
+      segno.style.left = `${scala.segno}%`;
+      contenitore.append(segno);
+    }
+    return contenitore;
+  }
+  function nodoRiga(a, s) {
+    const qta = S.qta[a.codice] ?? null;
+    const v = valuta(qta, s);
+    const idInput = `q-${a.codice}`;
+    return el(
+      "div",
+      { class: "riga", "data-codice": a.codice, "data-stato": v.stato },
+      el(
+        "div",
+        { class: "art" },
+        el("label", { class: "desc", for: idInput, text: a.descrizione }),
+        el(
+          "div",
+          { class: "meta" },
+          el("span", { class: "codice", text: a.codice }),
+          a.aggiunto ? el("span", { class: "badge", text: "Aggiunto" }) : null,
+          el("span", { class: "soglia-testo", text: testoSoglia(s) })
+        )
+      ),
+      el(
+        "div",
+        { class: "conta" },
+        el("input", {
+          id: idInput,
+          class: "qta",
+          type: "text",
+          inputmode: "numeric",
+          pattern: "[0-9]*",
+          autocomplete: "off",
+          enterkeyhint: "next",
+          placeholder: "\u2014",
+          value: qta === null ? "" : String(qta),
+          "aria-describedby": `esito-${a.codice}`,
+          "data-codice": a.codice
+        }),
+        el("span", { class: "unita", text: "pz" })
+      ),
+      nodoEsito(a.codice, v),
+      nodoIndicatore(qta, s, v.stato)
+    );
+  }
+  function aggiornaRiga(codice) {
+    const riga = document.querySelector(`#vista-conteggio .riga[data-codice="${codice}"]`);
+    if (!riga) return;
+    const s = soglieCorrenti(S.hotel)[codice];
+    const qta = S.qta[codice] ?? null;
+    const v = valuta(qta, s);
+    riga.dataset.stato = v.stato;
+    riga.querySelector(".esito")?.replaceWith(nodoEsito(codice, v));
+    riga.querySelector(".indicatore")?.replaceWith(nodoIndicatore(qta, s, v.stato));
+  }
+  function nodoFiltri(conteggi, totale) {
+    const voci = [
+      ["tutti", "Tutti", totale],
+      ["sotto", ETICHETTA_STATO.sotto, conteggi.sotto],
+      ["eccesso", ETICHETTA_STATO.eccesso, conteggi.eccesso],
+      ["ok", ETICHETTA_STATO.ok, conteggi.ok],
+      ["da-contare", ETICHETTA_STATO["da-contare"], conteggi["da-contare"]]
+    ];
+    if (conteggi["senza-soglia"] > 0) voci.push(["senza-soglia", ETICHETTA_STATO["senza-soglia"], conteggi["senza-soglia"]]);
+    return el(
+      "div",
+      { class: "filtri", role: "group", "aria-label": "Filtra per stato", id: "filtri" },
+      ...voci.map(
+        ([f, etichetta, n]) => el(
+          "button",
+          { type: "button", class: "filtro", "data-filtro": f, "data-tono": f, "aria-pressed": String(S.filtro === f) },
+          el("span", { text: etichetta }),
+          el("b", { text: numero(n) })
+        )
+      )
+    );
+  }
+  function aggiornaFiltri() {
+    const valutazioni = righeCorrenti().map((r) => r.valutazione);
+    $("filtri").replaceWith(nodoFiltri(contaStati(valutazioni), valutazioni.length));
+  }
+  function righeVisibili() {
+    const soglie = soglieCorrenti(S.hotel);
+    const q = S.ricerca.trim().toLowerCase();
+    return articoliCasa(S.hotel).filter((a) => {
+      if (q && !`${a.codice} ${a.descrizione} ${a.descrizioneFornitore}`.toLowerCase().includes(q)) return false;
+      if (S.filtro === "tutti") return true;
+      return valuta(S.qta[a.codice] ?? null, soglie[a.codice]).stato === S.filtro;
+    });
+  }
+  function nodoElencoRighe() {
+    const soglie = soglieCorrenti(S.hotel);
+    const visibili = righeVisibili();
+    const elenco = el("div", { class: "elenco", id: "elenco" });
+    if (!visibili.length) {
+      elenco.append(
+        el("p", { class: "vuoto", text: "Nessun articolo corrisponde al filtro o alla ricerca." })
+      );
+      return elenco;
+    }
+    for (const cat of ORDINE_CATEGORIE) {
+      const diCat = visibili.filter((a) => a.categoria === cat);
+      if (!diCat.length) continue;
+      elenco.append(
+        el(
+          "section",
+          { class: "categoria", "aria-label": ETICHETTA_CATEGORIA[cat] },
+          el("h3", {}, ETICHETTA_CATEGORIA[cat], el("span", { class: "conta-cat", text: String(diCat.length) })),
+          ...diCat.map((a) => nodoRiga(a, soglie[a.codice]))
+        )
+      );
+    }
+    return elenco;
+  }
+  function nodoStatoDocumento() {
+    const doc = inventarioSalvato(S.hotel, S.data);
+    if (S.modificato) {
+      return el("span", {
+        class: "chip chip--bozza",
+        text: doc ? "Modifiche non salvate" : "Bozza non salvata"
+      });
+    }
+    if (doc) return el("span", { class: "chip chip--salvato", text: `Salvato il ${dataOra(doc.salvatoIl)}` });
+    return el("span", { class: "chip", text: "Nuovo inventario" });
+  }
+  function renderConteggio() {
+    const h = hotelPerId(S.hotel);
+    const righe = righeCorrenti();
+    const conteggi = contaStati(righe.map((r) => r.valutazione));
+    const soglieImpostate = righe.some((r) => r.soglia?.min != null || r.soglia?.max != null);
+    const doc = inventarioSalvato(S.hotel, S.data);
+    const intestazione = el(
+      "div",
+      { class: "intestazione" },
+      el("div", {}, el("h2", { text: h.nome }), el("p", { class: "sotto-titolo", text: `${h.localita} \xB7 cliente Servizi Italia ${h.codiceCliente}` })),
+      el("div", { class: "quando" }, el("p", { class: "data-lunga", text: `Inventario di ${dataLunga(S.data)}` }), nodoStatoDocumento())
+    );
+    const avvisoSoglie = S.dbStato === "pronto" && !soglieImpostate ? el(
+      "div",
+      { class: "callout" },
+      el("p", {
+        text: `Le soglie di ${h.nome} non sono ancora impostate: senza minimo e massimo la piattaforma non pu\xF2 segnalare mancanze o eccessi.`
+      }),
+      S.puoSoglie ? el("button", { type: "button", class: "btn", "data-vista": "soglie", text: "Imposta le soglie" }) : el("p", { class: "piccolo", text: "Chiedi a chi gestisce la piattaforma di impostarle." })
+    ) : null;
+    const cerca = el(
+      "div",
+      { class: "cerca" },
+      el("label", { for: "cerca", class: "sr-only", text: "Cerca articolo" }),
+      el("input", {
+        id: "cerca",
+        type: "search",
+        placeholder: "Cerca per codice o articolo, es. A000037",
+        value: S.ricerca,
+        autocomplete: "off"
+      })
+    );
+    const mancaArticolo = S.dbStato === "pronto" ? el(
+      "div",
+      { class: "manca" },
+      S.puoSoglie ? el(
+        "button",
+        { type: "button", class: "btn btn--testo", id: "vai-aggiungi" },
+        "Manca un articolo? Aggiungilo all'elenco"
+      ) : el("p", { class: "piccolo", text: "Manca un articolo? Annotalo nella nota: chi gestisce la piattaforma pu\xF2 aggiungerlo all'elenco." })
+    ) : null;
+    const nota = el(
+      "div",
+      { class: "nota" },
+      el("label", { for: "nota", text: "Nota (facoltativa)" }),
+      el("textarea", { id: "nota", rows: 2, placeholder: "Es. 20 federe macchiate messe da parte per il reso" })
+    );
+    nota.querySelector("textarea").value = S.nota;
+    const azioni = el(
+      "div",
+      { class: "azioni" },
+      el("button", { type: "button", class: "btn", id: "copia", text: "Copia riepilogo" }),
+      S.downloads ? el("button", { type: "button", class: "btn", id: "esporta", text: "Esporta CSV" }) : null,
+      S.modificato ? el("button", { type: "button", class: "btn btn--testo", id: "annulla-modifiche", text: doc ? "Torna al salvato" : "Svuota bozza" }) : null,
+      doc && S.db && !S.solaLettura && !S.confermaElimina ? el("button", { type: "button", class: "btn btn--testo btn--pericolo", id: "elimina", text: "Elimina inventario" }) : null
+    );
+    const conferma = S.confermaElimina && doc ? el(
+      "div",
+      { class: "conferma", role: "group", "aria-label": "Conferma eliminazione" },
+      el("p", { text: `Eliminare l'inventario del ${dataBreve(doc.data)} di ${h.nome}? Non si pu\xF2 annullare.` }),
+      el(
+        "div",
+        { class: "azioni" },
+        el("button", { type: "button", class: "btn btn--pericolo-pieno", id: "conferma-elimina", text: "Elimina" }),
+        el("button", { type: "button", class: "btn", id: "annulla-elimina", text: "Annulla" })
+      )
+    ) : null;
+    const copiaManuale = S.testoCopia ? el(
+      "div",
+      { class: "copia-manuale" },
+      el("label", { for: "testo-copia", text: "Copia questo testo:" }),
+      el("textarea", { id: "testo-copia", rows: 8, readonly: true })
+    ) : null;
+    if (copiaManuale) copiaManuale.querySelector("textarea").value = S.testoCopia ?? "";
+    conFocus(() => {
+      $("vista-conteggio").replaceChildren(
+        ...[intestazione, avvisoSoglie, nodoFiltri(conteggi, righe.length), cerca, nodoElencoRighe(), mancaArticolo, nota, azioni, conferma, copiaManuale].filter(
+          (n) => n !== null
+        )
+      );
+    });
+  }
+  function renderElenco() {
+    conFocus(() => $("elenco").replaceWith(nodoElencoRighe()));
+  }
+  var gettoneStorico = 0;
+  async function renderStorico() {
+    const gettone = ++gettoneStorico;
+    const h = hotelPerId(S.hotel);
+    const lista = S.inventari.filter((i) => i.hotel === S.hotel).sort((a, b) => b.data.localeCompare(a.data));
+    const contenitore = $("vista-storico");
+    const nomi = {};
+    if (S.user) {
+      const ids = [...new Set(lista.map((i) => i.salvatoDa).filter((x) => !!x))];
+      if (ids.length) {
+        const profili = await S.user.profiles(ids);
+        if (gettone !== gettoneStorico) return;
+        for (const id of ids) nomi[id] = profili[id]?.name || "";
+      }
+    }
+    const chi = (id) => {
+      if (!id) return "";
+      if (id === S.userId) return " da te";
+      return nomi[id] ? ` da ${nomi[id]}` : "";
+    };
+    const intestazione = el(
+      "div",
+      { class: "intestazione" },
+      el("div", {}, el("h2", { text: `Storico \xB7 ${h.nome}` }), el("p", { class: "sotto-titolo", text: "Lo stato \xE8 calcolato con le soglie in vigore al momento del salvataggio." }))
+    );
+    let corpo;
+    if (S.dbStato === "assente") {
+      corpo = el("p", { class: "vuoto", text: "Lo storico non \xE8 disponibile in questa vista." });
+    } else if (!S.inventariCaricati) {
+      corpo = el("p", { class: "vuoto", text: "Caricamento dello storico\u2026" });
+    } else if (!lista.length) {
+      corpo = el(
+        "div",
+        { class: "vuoto" },
+        el("p", { text: `Nessun inventario salvato per ${h.nome}.` }),
+        el("p", { text: "Conta la biancheria nella scheda Conteggio e premi Salva inventario: comparir\xE0 qui." })
+      );
+    } else {
+      corpo = el(
+        "ol",
+        { class: "storico" },
+        ...lista.map((inv) => {
+          const valutazioni = Object.values(inv.righe).map((r) => valuta(r.qta, { min: r.min, max: r.max }));
+          const c = contaStati(valutazioni);
+          const contati = valutazioni.length - c["da-contare"];
+          return el(
+            "li",
+            { class: `voce${inv.data === S.data ? " voce--corrente" : ""}` },
+            el(
+              "div",
+              { class: "voce-testa" },
+              el("p", { class: "voce-data", text: dataLunga(inv.data) }),
+              el("button", { type: "button", class: "btn", "data-apri": inv.data, text: "Apri" })
+            ),
+            el(
+              "div",
+              { class: "voce-pill" },
+              c.sotto ? el("span", { class: "pill pill--sotto", text: `${c.sotto} sotto minimo` }) : null,
+              c.eccesso ? el("span", { class: "pill pill--eccesso", text: `${c.eccesso} in eccesso` }) : null,
+              c.ok ? el("span", { class: "pill pill--ok", text: `${c.ok} nella norma` }) : null,
+              c["senza-soglia"] ? el("span", { class: "pill pill--senza-soglia", text: `${c["senza-soglia"]} senza soglia` }) : null,
+              el("span", { class: "contati", text: `${contati} di ${valutazioni.length} contati` })
+            ),
+            el("p", { class: "voce-meta", text: `Salvato il ${dataOra(inv.salvatoIl)}${chi(inv.salvatoDa)}` }),
+            inv.nota ? el("p", { class: "voce-nota", text: inv.nota }) : null
+          );
+        })
+      );
+    }
+    contenitore.replaceChildren(intestazione, corpo);
+  }
+  function nodoModuloArticolo() {
+    const m = S.modulo;
+    return el(
+      "section",
+      { class: "aggiungi", "aria-labelledby": "tit-aggiungi" },
+      el(
+        "div",
+        { class: "aggiungi-testa" },
+        el("h3", { id: "tit-aggiungi", text: "Aggiungi articolo" }),
+        el("button", { type: "button", class: "btn btn--testo", id: "chiudi-modulo", text: "Chiudi" })
+      ),
+      el("p", {
+        class: "piccolo",
+        text: "Per biancheria che non compare nelle fatture. Con un codice Servizi Italia gi\xE0 noto la descrizione si compila da sola; lasciando il codice vuoto la piattaforma assegna un codice interno (INT-001, INT-002\u2026)."
+      }),
+      el(
+        "div",
+        { class: "griglia-modulo" },
+        el(
+          "div",
+          { class: "campo" },
+          el("label", { for: "nuovo-codice", text: "Codice (facoltativo)" }),
+          el("input", {
+            id: "nuovo-codice",
+            list: "codici-noti",
+            autocomplete: "off",
+            autocapitalize: "characters",
+            spellcheck: "false",
+            maxlength: 30,
+            placeholder: "A000079",
+            value: m.codice
+          })
+        ),
+        el(
+          "div",
+          { class: "campo" },
+          el("label", { for: "nuovo-descrizione", text: "Descrizione" }),
+          el("input", {
+            id: "nuovo-descrizione",
+            autocomplete: "off",
+            maxlength: 60,
+            placeholder: "Coprimaterasso 1 piazza",
+            value: m.descrizione
+          })
+        ),
+        el(
+          "div",
+          { class: "campo" },
+          el("label", { for: "nuovo-categoria", text: "Categoria" }),
+          el(
+            "select",
+            { id: "nuovo-categoria" },
+            ...ORDINE_CATEGORIE.map(
+              (c) => el("option", { value: c, text: ETICHETTA_CATEGORIA[c], selected: c === m.categoria })
+            )
+          )
+        )
+      ),
+      el(
+        "fieldset",
+        { class: "case-check" },
+        el("legend", { text: "Aggiungi a" }),
+        ...HOTELS.map(
+          (h) => el(
+            "label",
+            { class: "check" },
+            el("input", { type: "checkbox", id: `nuovo-casa-${h.id}`, "data-nuovo-casa": h.id, checked: m.case.includes(h.id) }),
+            h.nome
+          )
+        )
+      ),
+      el("p", { class: "errore", id: "errore-modulo", role: "alert", text: S.erroreModulo ?? "", hidden: !S.erroreModulo }),
+      el(
+        "div",
+        { class: "azioni" },
+        el("button", {
+          type: "button",
+          class: "btn btn--scuro",
+          id: "aggiungi-articolo",
+          text: S.salvando ? "Aggiunta in corso\u2026" : "Aggiungi articolo"
+        })
+      ),
+      el("datalist", { id: "codici-noti" }, ...ARTICOLI.map((a) => el("option", { value: a.codice, label: a.descrizione })))
+    );
+  }
+  function renderSoglie() {
+    const h = hotelPerId(S.hotel);
+    const doc = S.soglie[S.hotel];
+    if (!S.soglieModificate[S.hotel]) S.campiSoglie[S.hotel] = campiDaSoglie(S.hotel);
+    const campi = S.campiSoglie[S.hotel];
+    const gestione = S.puoSoglie && S.db !== null;
+    const intestazione = el(
+      "div",
+      { class: "intestazione" },
+      el(
+        "div",
+        {},
+        el("h2", { text: `Articoli e soglie \xB7 ${h.nome}` }),
+        el("p", {
+          class: "sotto-titolo",
+          text: "Il minimo segnala la biancheria che manca, il massimo quella in eccesso. Valgono per tutti i prossimi inventari di questa casa."
+        }),
+        doc?.aggiornatoIl ? el("p", { class: "piccolo", text: `Soglie modificate l'ultima volta il ${dataOra(doc.aggiornatoIl)}` }) : null,
+        !S.puoSoglie && S.dbStato !== "attesa" ? el("p", { class: "piccolo", text: "Puoi consultare articoli e soglie; per modificarli serve l'accesso come Editor." }) : null
+      ),
+      gestione && !S.moduloAperto ? el("button", { type: "button", class: "btn", id: "apri-modulo", text: "+ Aggiungi articolo" }) : null
+    );
+    const modulo = gestione && S.moduloAperto ? nodoModuloArticolo() : null;
+    const elenco = el("div", { class: "elenco" });
+    for (const cat of ORDINE_CATEGORIE) {
+      const articoli = articoliCasa(S.hotel).filter((a) => a.categoria === cat);
+      if (!articoli.length) continue;
+      elenco.append(
+        el(
+          "section",
+          { class: "categoria", "aria-label": ETICHETTA_CATEGORIA[cat] },
+          el("h3", {}, ETICHETTA_CATEGORIA[cat]),
+          ...articoli.map((a) => {
+            const rif = riferimento(S.hotel, a.codice);
+            const aggiunto = a.aggiunto ? S.aggiunti.find((x) => x.hotel === S.hotel && x.codice === a.codice) : void 0;
+            const c = campi[a.codice] ?? { min: "", max: "" };
+            const { errore } = validaSoglia(c.min, c.max);
+            let testoRif = "";
+            if (rif) {
+              testoRif = `Settembre 2026: ${numero(rif.pezzi)} pz in ${rif.consegne} consegne, circa ${numero(
+                Math.round(rif.pezzi / rif.consegne)
+              )} a consegna`;
+            } else if (aggiunto?.creatoIl) {
+              testoRif = `Aggiunto il ${dataOra(aggiunto.creatoIl)} \xB7 nessuna consegna in fattura`;
+            }
+            const campo = (tipo) => {
+              const id = `s-${tipo}-${a.codice}`;
+              const etichetta = tipo === "min" ? "Minimo" : "Massimo";
+              if (!S.puoSoglie) {
+                return el(
+                  "div",
+                  { class: `campo-soglia campo-soglia--${tipo}` },
+                  el("span", { class: "etichetta", text: etichetta }),
+                  el("span", { class: "valore", text: c[tipo] ? numero(Number(c[tipo])) : "\u2014" })
+                );
+              }
+              return el(
+                "div",
+                { class: `campo-soglia campo-soglia--${tipo}` },
+                el("label", { class: "etichetta", for: id, text: etichetta }),
+                el("input", {
+                  id,
+                  class: "qta qta--soglia",
+                  type: "text",
+                  inputmode: "numeric",
+                  pattern: "[0-9]*",
+                  autocomplete: "off",
+                  placeholder: "\u2014",
+                  value: c[tipo],
+                  "data-soglia": tipo,
+                  "data-codice": a.codice,
+                  "aria-invalid": errore ? "true" : void 0
+                })
+              );
+            };
+            const confermaRimozione = S.daRimuovere === a.codice ? el(
+              "div",
+              { class: "conferma conferma--riga", role: "group", "aria-label": "Conferma rimozione" },
+              el("p", {
+                text: `Rimuovere ${a.descrizione} (${a.codice}) da ${h.nome}? Gli inventari gi\xE0 salvati restano invariati.`
+              }),
+              el(
+                "div",
+                { class: "azioni" },
+                el("button", { type: "button", class: "btn btn--pericolo-pieno", "data-conferma-rimuovi": a.codice, text: "Rimuovi" }),
+                el("button", { type: "button", class: "btn", id: "annulla-rimuovi", text: "Annulla" })
+              )
+            ) : null;
+            return el(
+              "div",
+              { class: "riga riga--soglia", "data-codice": a.codice },
+              el(
+                "div",
+                { class: "art" },
+                el("span", { class: "desc", text: a.descrizione }),
+                el(
+                  "div",
+                  { class: "meta" },
+                  el("span", { class: "codice", text: a.codice }),
+                  a.aggiunto ? el("span", { class: "badge", text: "Aggiunto" }) : null,
+                  testoRif ? el("span", { text: testoRif }) : null,
+                  a.aggiunto && gestione && S.daRimuovere !== a.codice ? el("button", { type: "button", class: "btn--link btn--pericolo", "data-rimuovi": a.codice, text: "Rimuovi" }) : null
+                ),
+                confermaRimozione
+              ),
+              campo("min"),
+              campo("max"),
+              el("p", { class: "errore", id: `err-${a.codice}`, text: errore ?? "", hidden: !errore })
+            );
+          })
+        )
+      );
+    }
+    conFocus(
+      () => $("vista-soglie").replaceChildren(...[intestazione, modulo, elenco].filter((n) => n !== null))
+    );
+  }
+  function apriModulo() {
+    S.vista = "soglie";
+    S.moduloAperto = true;
+    S.erroreModulo = null;
+    if (!S.modulo.case.length) S.modulo.case = [S.hotel];
+    renderTutto();
+    const campo = document.getElementById("nuovo-codice");
+    campo?.scrollIntoView({ block: "center" });
+    campo?.focus({ preventScroll: true });
+  }
+  function attivaFocusDopo() {
+    if (!S.focusDopo) return;
+    const campo = document.getElementById(S.focusDopo);
+    if (!campo) return;
+    S.focusDopo = null;
+    campo.scrollIntoView({ block: "center" });
+    campo.focus({ preventScroll: true });
+  }
+  function erroreModulo(testo, focus) {
+    S.erroreModulo = testo;
+    renderSoglie();
+    document.getElementById(focus)?.focus();
+  }
+  async function aggiungiArticolo() {
+    if (S.salvando) return;
+    const db = S.db;
+    if (!db) return;
+    const m = S.modulo;
+    const codiceInserito = m.codice.trim().toUpperCase();
+    const descrizione = m.descrizione.trim().replace(/\s+/g, " ");
+    if (codiceInserito && !CODICE_VALIDO.test(codiceInserito)) {
+      erroreModulo("Il codice pu\xF2 contenere solo lettere, numeri, punto, trattino e trattino basso (massimo 30 caratteri).", "nuovo-codice");
+      return;
+    }
+    if (descrizione.length < 2) {
+      erroreModulo("Scrivi la descrizione dell'articolo.", "nuovo-descrizione");
+      return;
+    }
+    if (!m.case.length) {
+      erroreModulo("Scegli almeno una casa a cui aggiungere l'articolo.", `nuovo-casa-${S.hotel}`);
+      return;
+    }
+    const tuttiICodici = HOTELS.flatMap((h) => articoliCasa(h.id).map((a) => a.codice));
+    const codice = codiceInserito || codiceInternoLibero(tuttiICodici);
+    const giaPresente = m.case.filter((hid) => articoliCasa(hid).some((a) => a.codice === codice));
+    if (giaPresente.length) {
+      erroreModulo(
+        `Il codice ${codice} \xE8 gi\xE0 nell'elenco di ${giaPresente.map((hid) => hotelPerId(hid).nome).join(" e ")}.`,
+        "nuovo-codice"
+      );
+      return;
+    }
+    const daCatalogo = articoloDaCatalogo(codice);
+    const creatoIl = (/* @__PURE__ */ new Date()).toISOString();
+    const case_ = [...m.case];
+    S.salvando = true;
+    renderSoglie();
+    let riuscito = false;
+    try {
+      await Promise.all(
+        case_.map((hotel) => {
+          const doc = {
+            hotel,
+            codice,
+            descrizione,
+            descrizioneFornitore: daCatalogo?.descrizioneFornitore ?? descrizione.toUpperCase(),
+            categoria: m.categoria,
+            creatoIl,
+            creatoDa: S.userId
+          };
+          return conRitento(() => db.doc(`articoli/${hotel}_${codice}`).set(comeRecord(doc)));
+        })
+      );
+      riuscito = true;
+      S.modulo = moduloVuoto(S.hotel);
+      S.moduloAperto = false;
+      S.erroreModulo = null;
+      avvisa("ok", `${descrizione} (${codice}) aggiunto: imposta minimo e massimo e premi Salva soglie.`);
+    } catch (e) {
+      S.erroreModulo = testoErrore(e, "articoli");
+    } finally {
+      S.salvando = false;
+      renderTutto();
+    }
+    if (riuscito && case_.includes(S.hotel)) {
+      S.focusDopo = `s-min-${codice}`;
+      attivaFocusDopo();
+    }
+  }
+  async function rimuoviArticolo(codice) {
+    const db = S.db;
+    const hotel = S.hotel;
+    const art = S.aggiunti.find((a) => a.hotel === hotel && a.codice === codice);
+    if (!db || !art) return;
+    try {
+      await conRitento(() => db.doc(`articoli/${hotel}_${codice}`).delete());
+      S.daRimuovere = null;
+      avvisa("ok", `${art.descrizione} rimosso da ${hotelPerId(hotel).nome}.`);
+    } catch (e) {
+      avvisa("errore", testoErrore(e, "articoli"));
+    }
+    renderTutto();
+  }
+  function renderBarra() {
+    const barra = $("barra");
+    const info = el("div", { class: "info" });
+    let pulsante = null;
+    if (S.vista === "conteggio") {
+      const righe = righeCorrenti();
+      const c = contaStati(righe.map((r) => r.valutazione));
+      const contati = righe.length - c["da-contare"];
+      const parti = [`${contati} di ${righe.length} contati`];
+      if (c.sotto) parti.push(`${c.sotto} sotto minimo`);
+      if (c.eccesso) parti.push(`${c.eccesso} in eccesso`);
+      info.append(el("span", { class: "riassunto", text: parti.join(" \xB7 ") }));
+      if (S.db && !S.solaLettura) {
+        pulsante = el("button", {
+          type: "button",
+          class: "btn btn--primario",
+          id: "salva-inventario",
+          "aria-busy": S.salvando ? "true" : void 0
+        }, iconaSalva(), el("span", { text: S.salvando ? "Salvataggio\u2026" : "Salva inventario" }));
+      }
+    } else if (S.vista === "soglie" && S.puoSoglie && S.db) {
+      info.append(
+        el("span", {
+          class: "riassunto",
+          text: S.soglieModificate[S.hotel] ? "Modifiche alle soglie non salvate" : "Soglie aggiornate"
+        })
+      );
+      pulsante = el("button", {
+        type: "button",
+        class: "btn btn--primario",
+        id: "salva-soglie",
+        "aria-busy": S.salvando ? "true" : void 0
+      }, iconaSalva(), el("span", { text: S.salvando ? "Salvataggio\u2026" : "Salva soglie" }));
+    }
+    if (S.avviso) info.append(el("span", { class: `avviso avviso--${S.avviso.tono}`, role: "status", text: S.avviso.testo }));
+    const vuota = !pulsante && !S.avviso && S.vista === "storico";
+    barra.hidden = vuota || !pulsante && !info.childNodes.length;
+    conFocus(() => barra.replaceChildren(el("div", { class: "wrap barra-dentro" }, info, pulsante)));
+  }
+  var timerAvviso;
+  function avvisa(tono, testo) {
+    S.avviso = { tono, testo };
+    renderBarra();
+    window.clearTimeout(timerAvviso);
+    if (tono !== "errore") {
+      timerAvviso = window.setTimeout(() => {
+        S.avviso = null;
+        renderBarra();
+      }, 5e3);
+    }
+  }
+  function renderTutto() {
+    renderTestata();
+    renderBanner();
+    if (S.vista === "conteggio") renderConteggio();
+    else if (S.vista === "storico") void renderStorico();
+    else renderSoglie();
+    renderBarra();
+  }
+  async function salvaInventario() {
+    if (S.salvando) return;
+    const db = S.db;
+    if (!db) {
+      avvisa("info", "Il salvataggio non \xE8 disponibile in questa vista.");
+      return;
+    }
+    const articoli = articoliCasa(S.hotel);
+    if (!articoli.some((a) => S.qta[a.codice] != null)) {
+      avvisa("errore", "Inserisci almeno una quantit\xE0 prima di salvare.");
+      document.querySelector(".riga .qta")?.focus();
+      return;
+    }
+    const soglie = soglieCorrenti(S.hotel);
+    const righe = {};
+    for (const a of articoli) {
+      const s = soglie[a.codice];
+      righe[a.codice] = { qta: S.qta[a.codice] ?? null, min: s?.min ?? null, max: s?.max ?? null };
+    }
+    const { hotel, data } = S;
+    const doc = {
+      hotel,
+      data,
+      righe,
+      nota: S.nota.trim(),
+      salvatoIl: (/* @__PURE__ */ new Date()).toISOString(),
+      salvatoDa: S.userId
+    };
+    const mancanti = articoli.filter((a) => S.qta[a.codice] == null).length;
+    S.salvando = true;
+    renderBarra();
+    try {
+      await conRitento(() => db.doc(`inventari/${hotel}_${data}`).set(comeRecord(doc)));
+      cancellaBozza(hotel, data);
+      if (S.hotel === hotel && S.data === data) S.modificato = false;
+      avvisa(
+        "ok",
+        mancanti ? `Inventario salvato. ${mancanti} articoli risultano non contati.` : "Inventario salvato."
+      );
+    } catch (e) {
+      avvisa("errore", testoErrore(e, "inventario"));
+    } finally {
+      S.salvando = false;
+      renderTutto();
+    }
+  }
+  async function salvaSoglie() {
+    if (S.salvando) return;
+    const db = S.db;
+    if (!db) return;
+    const hotel = S.hotel;
+    const campi = S.campiSoglie[hotel];
+    const righe = {};
+    let primoErrore = null;
+    for (const a of articoliCasa(hotel)) {
+      const c = campi[a.codice] ?? { min: "", max: "" };
+      const { soglia, errore } = validaSoglia(c.min, c.max);
+      if (errore && !primoErrore) primoErrore = a.codice;
+      if (soglia.min !== null || soglia.max !== null) righe[a.codice] = soglia;
+    }
+    if (primoErrore) {
+      avvisa("errore", "Correggi le soglie evidenziate: il massimo non pu\xF2 essere inferiore al minimo.");
+      document.getElementById(`s-max-${primoErrore}`)?.focus();
+      return;
+    }
+    const doc = { hotel, righe, aggiornatoIl: (/* @__PURE__ */ new Date()).toISOString(), aggiornatoDa: S.userId };
+    S.salvando = true;
+    renderBarra();
+    try {
+      await conRitento(() => db.doc(`soglie/${hotel}`).set(comeRecord(doc)));
+      S.soglieModificate[hotel] = false;
+      avvisa("ok", `Soglie salvate per ${hotelPerId(hotel).nome}.`);
+    } catch (e) {
+      avvisa("errore", testoErrore(e, "soglie"));
+    } finally {
+      S.salvando = false;
+      renderTutto();
+    }
+  }
+  async function eliminaInventario() {
+    const db = S.db;
+    const doc = inventarioSalvato(S.hotel, S.data);
+    if (!db || !doc) return;
+    try {
+      await conRitento(() => db.doc(`inventari/${doc.id}`).delete());
+      cancellaBozza(doc.hotel, doc.data);
+      S.confermaElimina = false;
+      S.qta = {};
+      S.nota = "";
+      S.modificato = false;
+      avvisa("ok", "Inventario eliminato.");
+    } catch (e) {
+      avvisa("errore", testoErrore(e, "eliminazione"));
+    }
+    renderTutto();
+  }
+  async function copiaRiepilogo() {
+    const testo = testoRiepilogo(hotelPerId(S.hotel).nome, S.data, righeCorrenti());
+    try {
+      await navigator.clipboard.writeText(testo);
+      S.testoCopia = null;
+      avvisa("ok", "Riepilogo copiato: incollalo nel messaggio al fornitore o al responsabile.");
+    } catch {
+      S.testoCopia = testo;
+      renderConteggio();
+      const area = document.getElementById("testo-copia");
+      area?.focus();
+      area?.select();
+    }
+  }
+  async function esportaCsv() {
+    const dl = S.downloads;
+    if (!dl) return;
+    const h = hotelPerId(S.hotel);
+    try {
+      await dl.save({
+        filename: `inventario-biancheria_${h.id}_${S.data}.csv`,
+        data: csvInventario(h.nome, S.data, righeCorrenti())
+      });
+    } catch (e) {
+      const c = codiceErrore(e);
+      if (c === "declined") return;
+      avvisa("errore", c === "rate_limited" ? "C'\xE8 gi\xE0 un download in attesa di conferma." : "Esportazione non disponibile in questa vista.");
+    }
+  }
+  function pulisciErroreModulo() {
+    if (!S.erroreModulo) return;
+    S.erroreModulo = null;
+    const e = document.getElementById("errore-modulo");
+    if (e) {
+      e.textContent = "";
+      e.hidden = true;
+    }
+  }
+  function cambiaContesto(hotel, data) {
+    if (S.modificato) salvaBozzaOra();
+    if (hotel !== S.hotel) {
+      S.daRimuovere = null;
+      if (!S.modulo.codice.trim() && !S.modulo.descrizione.trim()) S.modulo.case = [hotel];
+    }
+    S.hotel = hotel;
+    S.data = data;
+    locale.scrivi(CHIAVE_HOTEL, hotel);
+    caricaContesto();
+    renderTutto();
+  }
+  function salvaBozzaOra() {
+    window.clearTimeout(timerBozza);
+    locale.scrivi(chiaveBozza(S.hotel, S.data), JSON.stringify({ qta: S.qta, nota: S.nota, ts: Date.now() }));
+  }
+  function collegaEventi() {
+    document.addEventListener("click", (ev) => {
+      const t = ev.target instanceof Element ? ev.target : null;
+      if (!t) return;
+      const hotelBtn = t.closest("[data-hotel]");
+      if (hotelBtn && isHotelId(hotelBtn.dataset.hotel)) {
+        if (hotelBtn.dataset.hotel !== S.hotel) cambiaContesto(hotelBtn.dataset.hotel, S.data);
+        return;
+      }
+      const vistaBtn = t.closest("[data-vista]");
+      if (vistaBtn) {
+        const v = vistaBtn.dataset.vista;
+        if (v === "conteggio" || v === "storico" || v === "soglie") {
+          S.vista = v;
+          S.avviso = null;
+          renderTutto();
+          window.scrollTo({ top: 0 });
+        }
+        return;
+      }
+      const filtroBtn = t.closest("[data-filtro]");
+      if (filtroBtn) {
+        const f = filtroBtn.dataset.filtro;
+        S.filtro = S.filtro === f && f !== "tutti" ? "tutti" : f;
+        aggiornaFiltri();
+        renderElenco();
+        return;
+      }
+      const apri = t.closest("[data-apri]");
+      if (apri && isDataISO(apri.dataset.apri)) {
+        S.vista = "conteggio";
+        S.filtro = "tutti";
+        cambiaContesto(S.hotel, apri.dataset.apri);
+        window.scrollTo({ top: 0 });
+        return;
+      }
+      const rimuovi = t.closest("[data-rimuovi]");
+      if (rimuovi?.dataset.rimuovi) {
+        S.daRimuovere = rimuovi.dataset.rimuovi;
+        renderSoglie();
+        document.getElementById("annulla-rimuovi")?.focus();
+        return;
+      }
+      const confermaRimozione = t.closest("[data-conferma-rimuovi]");
+      if (confermaRimozione?.dataset.confermaRimuovi) {
+        void rimuoviArticolo(confermaRimozione.dataset.confermaRimuovi);
+        return;
+      }
+      const id = t.closest("button[id]")?.id;
+      switch (id) {
+        case "apri-modulo":
+        case "vai-aggiungi":
+          apriModulo();
+          break;
+        case "chiudi-modulo":
+          S.moduloAperto = false;
+          S.erroreModulo = null;
+          renderSoglie();
+          break;
+        case "aggiungi-articolo":
+          void aggiungiArticolo();
+          break;
+        case "annulla-rimuovi":
+          S.daRimuovere = null;
+          renderSoglie();
+          break;
+        case "salva-inventario":
+          void salvaInventario();
+          break;
+        case "salva-soglie":
+          void salvaSoglie();
+          break;
+        case "copia":
+          void copiaRiepilogo();
+          break;
+        case "esporta":
+          void esportaCsv();
+          break;
+        case "annulla-modifiche":
+          cancellaBozza(S.hotel, S.data);
+          caricaDaSalvato();
+          renderTutto();
+          break;
+        case "elimina":
+          S.confermaElimina = true;
+          renderConteggio();
+          document.getElementById("annulla-elimina")?.focus();
+          break;
+        case "annulla-elimina":
+          S.confermaElimina = false;
+          renderConteggio();
+          break;
+        case "conferma-elimina":
+          void eliminaInventario();
+          break;
+      }
+    });
+    document.addEventListener("input", (ev) => {
+      const t = ev.target;
+      if (!(t instanceof HTMLInputElement || t instanceof HTMLTextAreaElement)) return;
+      if (t.id === "cerca") {
+        S.ricerca = t.value;
+        renderElenco();
+        return;
+      }
+      if (t.id === "nuovo-codice") {
+        S.modulo.codice = t.value;
+        const daCatalogo = articoloDaCatalogo(t.value.trim().toUpperCase());
+        if (daCatalogo && (S.modulo.descrizione.trim() === "" || S.modulo.descrizioneAutomatica)) {
+          S.modulo.descrizione = daCatalogo.descrizione;
+          S.modulo.categoria = daCatalogo.categoria;
+          S.modulo.descrizioneAutomatica = true;
+          const desc = document.getElementById("nuovo-descrizione");
+          if (desc instanceof HTMLInputElement) desc.value = daCatalogo.descrizione;
+          const cat = document.getElementById("nuovo-categoria");
+          if (cat instanceof HTMLSelectElement) cat.value = daCatalogo.categoria;
+        }
+        pulisciErroreModulo();
+        return;
+      }
+      if (t.id === "nuovo-descrizione") {
+        S.modulo.descrizione = t.value;
+        S.modulo.descrizioneAutomatica = false;
+        pulisciErroreModulo();
+        return;
+      }
+      if (t.id === "nota") {
+        S.nota = t.value;
+        S.modificato = true;
+        salvaBozzaPresto();
+        renderBarra();
+        return;
+      }
+      const codice = t.dataset.codice;
+      if (!codice) return;
+      const pulito = t.value.replace(/\D/g, "");
+      if (pulito !== t.value) t.value = pulito;
+      if (t.dataset.soglia === "min" || t.dataset.soglia === "max") {
+        const campi = S.campiSoglie[S.hotel];
+        const attuale = campi[codice] ?? { min: "", max: "" };
+        campi[codice] = { ...attuale, [t.dataset.soglia]: pulito };
+        S.soglieModificate[S.hotel] = true;
+        const { errore } = validaSoglia(campi[codice].min, campi[codice].max);
+        const err = document.getElementById(`err-${codice}`);
+        if (err) {
+          err.textContent = errore ?? "";
+          err.hidden = !errore;
+        }
+        for (const tipo of ["min", "max"]) {
+          const inp = document.getElementById(`s-${tipo}-${codice}`);
+          if (errore) inp?.setAttribute("aria-invalid", "true");
+          else inp?.removeAttribute("aria-invalid");
+        }
+        renderBarra();
+        return;
+      }
+      S.qta[codice] = parseIntero(pulito);
+      S.modificato = true;
+      S.confermaElimina = false;
+      salvaBozzaPresto();
+      aggiornaRiga(codice);
+      aggiornaFiltri();
+      renderBarra();
+      const chip = document.querySelector(".quando .chip");
+      chip?.replaceWith(nodoStatoDocumento());
+    });
+    document.addEventListener("change", (ev) => {
+      const t = ev.target;
+      if (t instanceof HTMLSelectElement && t.id === "nuovo-categoria" && isCategoria(t.value)) {
+        S.modulo.categoria = t.value;
+        return;
+      }
+      if (t instanceof HTMLInputElement && t.type === "checkbox" && isHotelId(t.dataset.nuovoCasa)) {
+        const casa = t.dataset.nuovoCasa;
+        S.modulo.case = t.checked ? [.../* @__PURE__ */ new Set([...S.modulo.case, casa])] : S.modulo.case.filter((x) => x !== casa);
+        pulisciErroreModulo();
+      }
+    });
+    document.addEventListener("keydown", (ev) => {
+      const t = ev.target;
+      if (ev.key === "Enter" && t instanceof HTMLInputElement && (t.id === "nuovo-codice" || t.id === "nuovo-descrizione")) {
+        ev.preventDefault();
+        void aggiungiArticolo();
+        return;
+      }
+      if (ev.key !== "Enter" || !(t instanceof HTMLInputElement) || !t.classList.contains("qta")) return;
+      ev.preventDefault();
+      const tutti = [...document.querySelectorAll("main input.qta")].filter((i) => !i.closest("[hidden]"));
+      const prossimo = tutti[tutti.indexOf(t) + 1];
+      if (prossimo) {
+        prossimo.focus();
+        prossimo.select();
+      } else {
+        t.blur();
+      }
+    });
+    $("data").addEventListener("change", (ev) => {
+      const v = ev.target.value;
+      if (isDataISO(v) && v !== S.data) cambiaContesto(S.hotel, v);
+    });
+    window.addEventListener("pagehide", () => {
+      if (S.modificato) salvaBozzaOra();
+    });
+  }
+  async function avviaArchivio() {
+    const claude = window.claude;
+    if (!claude || typeof claude.use !== "function") {
+      S.dbStato = "assente";
+      renderTutto();
+      return;
+    }
+    const [db, user, downloads] = await Promise.all([claude.use("db"), claude.use("user"), claude.use("downloads")]);
+    S.user = user;
+    S.downloads = downloads;
+    if (user) {
+      const [id, editor, scrittura] = await Promise.all([user.id(), user.canEdit(), user.can("data.write")]);
+      S.userId = id;
+      S.puoSoglie = editor;
+      if (scrittura === false) S.solaLettura = true;
+    }
+    if (!db) {
+      S.dbStato = "assente";
+      renderTutto();
+      return;
+    }
+    S.db = db;
+    S.dbStato = "pronto";
+    db.collection("soglie").onSnapshot(
+      (snap) => {
+        const nuove = { acadia: null, hartmann: null, saslong: null };
+        for (const d of snap.docs) {
+          const s = leggiSoglie(d.data());
+          if (s && d.id === s.hotel) nuove[s.hotel] = s;
+        }
+        S.soglie = nuove;
+        if (S.vista === "conteggio") renderConteggio();
+        else if (S.vista === "soglie") renderSoglie();
+        renderBarra();
+      },
+      () => {
+        S.dbStato = "assente";
+        renderTutto();
+      }
+    );
+    db.collection("articoli").onSnapshot(
+      (snap) => {
+        S.aggiunti = snap.docs.map((d) => leggiArticoloAggiunto(d.id, d.data())).filter((x) => x !== null);
+        if (S.daRimuovere && !S.aggiunti.some((a) => a.hotel === S.hotel && a.codice === S.daRimuovere)) S.daRimuovere = null;
+        if (S.vista === "conteggio") renderConteggio();
+        else if (S.vista === "soglie") renderSoglie();
+        renderBarra();
+        attivaFocusDopo();
+      },
+      () => {
+        S.dbStato = "assente";
+        renderTutto();
+      }
+    );
+    db.collection("inventari").orderBy("data", "desc").limit(1e3).onSnapshot(
+      (snap) => {
+        S.inventari = snap.docs.map((d) => leggiInventario(d.id, d.data())).filter((x) => x !== null && x.id === `${x.hotel}_${x.data}`);
+        S.inventariCaricati = true;
+        if (!S.modificato) caricaDaSalvato();
+        renderTutto();
+      },
+      () => {
+        S.dbStato = "assente";
+        renderTutto();
+      }
+    );
+    renderTutto();
+  }
+  function costruisciSelettoreCase() {
+    $("case").replaceChildren(
+      ...HOTELS.map(
+        (h) => el(
+          "button",
+          { type: "button", role: "radio", "data-hotel": h.id, "aria-checked": String(h.id === S.hotel) },
+          el("span", { class: "n", text: h.breve }),
+          el("span", { class: "l", text: h.localita })
+        )
+      )
+    );
+  }
+  function avvia() {
+    costruisciSelettoreCase();
+    collegaEventi();
+    caricaContesto();
+    renderTutto();
+    void avviaArchivio();
+  }
+  avvia();
+})();
+
+</script>
