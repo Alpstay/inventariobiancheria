@@ -1,3 +1,9 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Inventario biancheria AlpStay</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -186,6 +192,48 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
 .voce-meta{margin:8px 0 0;font-size:13px;color:var(--ink-3)}
 .voce-nota{margin:8px 0 0;padding-left:12px;border-left:2px solid var(--line);font-size:14px;color:var(--ink-2);white-space:pre-wrap}
 
+/* accesso */
+.accesso{min-height:100%;background:linear-gradient(180deg,var(--wash) 0,var(--bg) 320px)}
+.accesso-dentro{max-width:560px;padding-block:56px 8px}
+.form-accesso{display:flex;flex-direction:column}
+.form-accesso input{width:100%;height:60px;padding:0 14px;border:1px solid var(--line);border-radius:0;background:var(--bg);font-size:17px;margin-bottom:22px}
+.form-accesso input:focus{border-color:var(--green)}
+.btn--largo{width:100%}
+.messaggio-accesso{min-height:24px;margin:14px 0 0;text-align:center;font-size:15px;color:var(--ink-3)}
+.messaggio-accesso--errore{color:var(--red);font-weight:500}
+.nota-accesso{margin:18px 0 0;text-align:center;font-size:15px;color:var(--ink-3)}
+.esci{margin-top:4px;color:var(--ink-3)}
+.callout--info{border-color:var(--line)}
+
+/* andamento */
+.riga-andamento{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"art ultimo" "grafico grafico";gap:8px 14px;align-items:center;padding:16px 0 12px;border-bottom:1px solid var(--line-soft)}
+.riga-andamento .art{grid-area:art}
+.contenitore-grafico{grid-area:grafico;min-width:0}
+.grafico{display:block;width:100%;max-width:100%;height:56px;overflow:visible}
+.grafico-base{stroke:var(--line);stroke-width:1}
+.grafico-banda{fill:var(--band);opacity:.7}
+.grafico-linea{fill:none;stroke:var(--ink-2);stroke-width:2;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.grafico-area{fill:transparent;cursor:default}
+.grafico-segno{fill:var(--ink-2);stroke:var(--bg);stroke-width:2;vector-effect:non-scaling-stroke}
+.grafico-segno--sotto{fill:var(--red)}
+.grafico-segno--eccesso{fill:var(--amber)}
+.grafico-segno--ok{fill:var(--ok)}
+.grafico-punto:hover .grafico-segno{stroke:var(--ink)}
+.ultimo{grid-area:ultimo;display:flex;flex-direction:column;align-items:flex-end;gap:4px;text-align:right}
+.ultimo-valore{font-size:21px;font-weight:500;font-variant-numeric:tabular-nums}
+.differenza{font-size:13px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.tabella-sezione{margin-top:8px}
+.scorri{overflow-x:auto;margin-top:10px;border:1px solid var(--line-soft)}
+.tabella-valori{border-collapse:collapse;min-width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+.tabella-valori th,.tabella-valori td{padding:9px 12px;border-bottom:1px solid var(--line-soft);text-align:right;white-space:nowrap}
+.tabella-valori thead th{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);background:var(--surface)}
+.tabella-valori tbody th{text-align:left;font-weight:500;max-width:240px;overflow:hidden;text-overflow:ellipsis}
+.tabella-valori thead th:first-child{text-align:left}
+.tabella-valori .vuota{color:var(--ink-3)}
+.segno-cella{display:inline-block;width:7px;height:7px;margin-right:6px;vertical-align:1px}
+.cella--sotto .segno-cella{background:var(--red)}
+.cella--eccesso .segno-cella{background:var(--amber)}
+
 /* firma */
 .firma{display:flex;flex-direction:column;align-items:center;gap:14px;padding-block:44px 32px}
 .firma-riga{width:64px;height:1px;background:var(--line)}
@@ -198,6 +246,8 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
 .info{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1 1 220px;font-size:14px}
 .barra-dentro > .btn{margin-left:auto}
 .riassunto{color:var(--ink-2);font-variant-numeric:tabular-nums}
+.stato-salvataggio{color:var(--ok);font-weight:500}
+.stato-salvataggio--attesa{color:var(--ink-3)}
 .avviso{font-weight:500}
 .avviso--ok{color:var(--ok)}
 .avviso--errore{color:var(--red)}
@@ -205,8 +255,8 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
 
 @media (max-width:519px){
   .barra-dentro > .btn{flex:1 1 100%}
-  .schede{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;overflow:visible}
-  .schede button{padding-inline:4px;font-size:12px;letter-spacing:.08em;white-space:normal;text-align:center}
+  .schede{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;overflow:visible}
+  .schede button{padding-inline:2px;font-size:11px;letter-spacing:.05em;white-space:normal;text-align:center}
   .regola--titolo{gap:14px;letter-spacing:.14em}
   .regola--titolo::before,.regola--titolo::after{flex-basis:36px}
 }
@@ -216,9 +266,26 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
   .riga--soglia{grid-template-columns:minmax(0,1fr) 120px 120px;grid-template-areas:"art min max" "err err err"}
   .conta{justify-content:flex-end}
   .griglia-modulo{grid-template-columns:200px minmax(0,1fr) 200px}
+  .riga-andamento{grid-template-columns:minmax(0,1fr) 220px 170px;grid-template-areas:"art grafico ultimo"}
+  .grafico{height:48px}
 }
 </style>
-
+</head>
+<body>
+<section class="accesso" id="accesso" aria-labelledby="titolo-accesso" hidden>
+  <div class="wrap accesso-dentro">
+    <h1 id="titolo-accesso"><span>Inventario</span><span>biancheria</span></h1>
+    <p class="regola regola--titolo">Accesso staff AlpStay</p>
+    <form class="form-accesso" id="form-accesso" novalidate>
+      <label class="etichetta-campo" for="password-staff">Password</label>
+      <input type="password" id="password-staff" autocomplete="current-password">
+      <button type="submit" class="btn btn--primario btn--largo" id="accedi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Accedi</span></button>
+      <p class="messaggio-accesso" id="messaggio-accesso" role="status"></p>
+    </form>
+    <p class="nota-accesso">Una password unica per tutto lo staff: la stessa di AlpStay Gruppi.</p>
+  </div>
+</section>
+<div id="app">
 <header class="testata">
   <div class="wrap">
     <h1><span>Inventario</span><span>biancheria</span></h1>
@@ -236,6 +303,7 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
     <nav class="schede" role="tablist" aria-label="Sezioni">
       <button type="button" role="tab" id="tab-conteggio" data-vista="conteggio" aria-selected="true">Conteggio</button>
       <button type="button" role="tab" id="tab-storico" data-vista="storico" aria-selected="false">Storico</button>
+      <button type="button" role="tab" id="tab-andamento" data-vista="andamento" aria-selected="false">Andamento</button>
       <button type="button" role="tab" id="tab-soglie" data-vista="soglie" aria-selected="false">Articoli e soglie</button>
     </nav>
   </div>
@@ -244,12 +312,15 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
   <p class="banner" id="banner" hidden></p>
   <section id="vista-conteggio" aria-labelledby="tab-conteggio"></section>
   <section id="vista-storico" aria-labelledby="tab-storico" hidden></section>
+  <section id="vista-andamento" aria-labelledby="tab-andamento" hidden></section>
   <section id="vista-soglie" aria-labelledby="tab-soglie" hidden></section>
 </main>
-<div class="firma" role="img" aria-label="MP · AlpStay">
+</div>
+<div class="firma">
   <span class="firma-riga"></span>
-  <span class="monogramma"></span>
-  <span class="firma-testo">MP · ALPSTAY</span>
+  <span class="monogramma" role="img" aria-label="MP &middot; AlpStay"></span>
+  <span class="firma-testo">MP &middot; ALPSTAY</span>
+  <button type="button" class="btn--link esci" id="esci" hidden>Esci</button>
 </div>
 <footer class="barra" id="barra"></footer>
 <script>
@@ -540,8 +611,188 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
     }
     return out.join("\n").trim();
   }
+  function serieArticolo(inventari, codice) {
+    return [...inventari].sort((a, b) => a.data.localeCompare(b.data)).flatMap((inv) => {
+      const r = inv.righe[codice];
+      if (!r || r.qta === null) return [];
+      const v = valuta(r.qta, { min: r.min, max: r.max });
+      return [{ data: inv.data, qta: r.qta, min: r.min, max: r.max, stato: v.stato }];
+    });
+  }
+  function mesiFa(mesi, oggi = /* @__PURE__ */ new Date()) {
+    const d = new Date(oggi.getFullYear(), oggi.getMonth() - mesi, oggi.getDate());
+    return oggiISO(d);
+  }
+  function codiciInventario(articoli, righe) {
+    const inElenco = articoli.map((a) => a.codice);
+    const altri = Object.keys(righe).filter((c) => !inElenco.includes(c)).sort();
+    return [...inElenco, ...altri];
+  }
+  function csvStorico(blocchi) {
+    const intestazione = [
+      "Struttura",
+      "Data",
+      "Codice",
+      "Articolo",
+      "Descrizione fornitore",
+      "Categoria",
+      "Quantit\xE0",
+      "Minimo",
+      "Massimo",
+      "Stato",
+      "Scarto",
+      "Nota inventario",
+      "Salvato il"
+    ];
+    const righe = [];
+    const ordinati = [...blocchi].sort(
+      (a, b) => b.inventario.data.localeCompare(a.inventario.data) || a.nomeHotel.localeCompare(b.nomeHotel)
+    );
+    for (const { nomeHotel, articoli, inventario } of ordinati) {
+      for (const codice of codiciInventario(articoli, inventario.righe)) {
+        const r = inventario.righe[codice];
+        const a = articoli.find((x) => x.codice === codice);
+        const v = valuta(r?.qta ?? null, r ? { min: r.min, max: r.max } : void 0);
+        righe.push([
+          nomeHotel,
+          dataBreve(inventario.data),
+          codice,
+          a?.descrizione ?? codice,
+          a?.descrizioneFornitore ?? "",
+          a ? ETICHETTA_CATEGORIA[a.categoria] : "",
+          r?.qta ?? null,
+          r?.min ?? null,
+          r?.max ?? null,
+          ETICHETTA_STATO[v.stato],
+          v.scarto,
+          inventario.nota,
+          inventario.salvatoIl ? new Date(inventario.salvatoIl).toLocaleString("it-IT") : ""
+        ]);
+      }
+    }
+    return "\uFEFF" + [intestazione, ...righe].map((r) => r.map(cellaCsv).join(";")).join("\r\n");
+  }
+
+  // src/archivio.ts
+  function archivioClaude(db) {
+    return {
+      tipo: "condiviso",
+      ascolta(c, cb, errore) {
+        return db.collection(c).onSnapshot(
+          (snap) => cb(snap.docs.map((d) => ({ id: d.id, data: d.data() ?? {} }))),
+          (e) => errore({ code: e.code, message: e.message })
+        );
+      },
+      scrivi: (c, id, dati) => db.doc(`${c}/${id}`).set(dati),
+      elimina: (c, id) => db.doc(`${c}/${id}`).delete()
+    };
+  }
+  var PREFISSO_ARCHIVIO_LOCALE = "inv-biancheria:archivio:";
+
+  // src/firebase.ts
+  var CONFIG_FIREBASE = {
+    apiKey: "AIzaSyCQZnksSKS-OpP39jVn-H7H-tdzCoqkxjA",
+    authDomain: "alpstaygruppi.firebaseapp.com",
+    databaseURL: "https://alpstaygruppi-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "alpstaygruppi",
+    storageBucket: "alpstaygruppi.firebasestorage.app",
+    messagingSenderId: "1024055071024",
+    appId: "1:1024055071024:web:5238fb22a1f73d24b238f5"
+  };
+  var EMAIL_STAFF = "staff@alpstaygruppi.alpstay.eu";
+  var RAMO = "biancheria";
+  var SDK = "https://www.gstatic.com/firebasejs/10.12.2/";
+  function chiaveFirebase(id) {
+    return id.replace(/[.#$[\]/%]/g, (c) => `%${c.charCodeAt(0).toString(16).toUpperCase().padStart(2, "0")}`);
+  }
+  function daChiaveFirebase(k) {
+    try {
+      return decodeURIComponent(k);
+    } catch {
+      return k;
+    }
+  }
+  function erroreArchivio(e) {
+    const fe = e && typeof e === "object" ? e : {};
+    const testo = `${fe.code ?? ""} ${fe.message ?? ""}`.toLowerCase();
+    if (testo.includes("permission")) return { code: "permission_denied", message: fe.message ?? "" };
+    if (testo.includes("network") || testo.includes("disconnect") || testo.includes("offline")) {
+      return { code: "unavailable", message: fe.message ?? "" };
+    }
+    return { code: fe.code || "unavailable", message: fe.message ?? "" };
+  }
+  async function caricaModulo(nome) {
+    return await import(
+      /* @vite-ignore */
+      SDK + nome
+    );
+  }
+  async function avviaFirebase() {
+    const [modApp, modDb, modAuth] = await Promise.all([
+      caricaModulo("firebase-app.js"),
+      caricaModulo("firebase-database.js"),
+      caricaModulo("firebase-auth.js")
+    ]);
+    const app = modApp.initializeApp(CONFIG_FIREBASE, "inventario-biancheria");
+    const db = modDb.getDatabase(app);
+    const auth = modAuth.getAuth(app);
+    try {
+      await modAuth.setPersistence(auth, modAuth.browserLocalPersistence);
+    } catch {
+    }
+    const riferimento2 = (c, id) => modDb.ref(db, id === void 0 ? `${RAMO}/${c}` : `${RAMO}/${c}/${chiaveFirebase(id)}`);
+    const archivio = {
+      tipo: "condiviso",
+      ascolta(c, cb, errore) {
+        return modDb.onValue(
+          riferimento2(c),
+          (snap) => {
+            const v = snap.val();
+            const docs = v && typeof v === "object" ? Object.entries(v).filter(([, d]) => d !== null && typeof d === "object" && !Array.isArray(d)).map(([k, d]) => ({ id: daChiaveFirebase(k), data: d })) : [];
+            cb(docs);
+          },
+          (e) => errore(erroreArchivio(e))
+        );
+      },
+      async scrivi(c, id, dati) {
+        try {
+          await modDb.set(riferimento2(c, id), JSON.parse(JSON.stringify(dati)));
+        } catch (e) {
+          throw erroreArchivio(e);
+        }
+      },
+      async elimina(c, id) {
+        try {
+          await modDb.remove(riferimento2(c, id));
+        } catch (e) {
+          throw erroreArchivio(e);
+        }
+      }
+    };
+    return {
+      quandoCambiaAccesso(cb) {
+        modAuth.onAuthStateChanged(auth, (utente) => cb(utente ? archivio : null));
+      },
+      async accedi(password) {
+        await modAuth.signInWithEmailAndPassword(auth, EMAIL_STAFF, password);
+      },
+      async esci() {
+        await modAuth.signOut(auth);
+      }
+    };
+  }
+  function testoErroreAccesso(e) {
+    const code = e && typeof e === "object" && "code" in e ? String(e.code) : "";
+    if (code === "auth/wrong-password" || code === "auth/invalid-credential" || code === "auth/invalid-login-credentials" || code === "auth/user-not-found") {
+      return "Password errata.";
+    }
+    if (code === "auth/too-many-requests") return "Troppi tentativi. Attendi qualche minuto e riprova.";
+    if (code === "auth/network-request-failed") return "Nessuna connessione. Controlla la rete e riprova.";
+    return `Accesso non riuscito${code ? ` (${code})` : ""}. Riprova.`;
+  }
 
   // src/app.ts
+  var MODO = window.claude ? "claude" : "firebase";
   var moduloVuoto = (hotel) => ({
     codice: "",
     descrizione: "",
@@ -609,8 +860,21 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
     soglie: { acadia: null, hartmann: null, saslong: null },
     inventari: [],
     inventariCaricati: false,
-    db: null,
+    archivio: null,
     dbStato: "attesa",
+    erroreArchivio: null,
+    revisione: 0,
+    toccati: /* @__PURE__ */ new Set(),
+    salvataggioInSospeso: false,
+    autonoma: MODO === "firebase",
+    soglieArrivate: false,
+    bozzeRecuperate: false,
+    periodo: 12,
+    sessione: null,
+    accesso: MODO === "claude" ? "ok" : "verifica",
+    erroreAccesso: null,
+    staAccedendo: false,
+    scollega: [],
     user: null,
     downloads: null,
     userId: null,
@@ -638,6 +902,14 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
   function inventarioSalvato(hotel, data) {
     return S.inventari.find((i) => i.hotel === hotel && i.data === data);
   }
+  function soglieInventario(hotel, data) {
+    const attuali = soglieCorrenti(hotel);
+    const doc = inventarioSalvato(hotel, data);
+    if (!doc || data >= oggiISO()) return attuali;
+    const out = { ...attuali };
+    for (const [codice, r] of Object.entries(doc.righe)) out[codice] = { min: r.min, max: r.max };
+    return out;
+  }
   function caricaContesto() {
     S.confermaElimina = false;
     S.testoCopia = null;
@@ -646,11 +918,16 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
       S.qta = bozza.qta;
       S.nota = bozza.nota;
       S.modificato = true;
+      S.toccati = /* @__PURE__ */ new Set([...Object.keys(bozza.qta), "__nota"]);
+      S.revisione++;
+      programmaSalvataggio();
       return;
     }
     caricaDaSalvato();
   }
   function caricaDaSalvato() {
+    window.clearTimeout(timerAuto);
+    S.toccati.clear();
     const doc = inventarioSalvato(S.hotel, S.data);
     const qta = {};
     if (doc) for (const [cod, r] of Object.entries(doc.righe)) qta[cod] = r.qta;
@@ -671,7 +948,7 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
     return out;
   }
   function righeCorrenti() {
-    const soglie = soglieCorrenti(S.hotel);
+    const soglie = soglieInventario(S.hotel, S.data);
     return articoliCasa(S.hotel).map((articolo) => {
       const qta = S.qta[articolo.codice] ?? null;
       const soglia = soglie[articolo.codice];
@@ -689,6 +966,11 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
           const o = r;
           righe[cod] = { qta: numONull(o.qta), min: numONull(o.min), max: numONull(o.max) };
         }
+      }
+    }
+    if (typeof raw.codici === "string") {
+      for (const cod of raw.codici.split(",")) {
+        if (cod && !righe[cod]) righe[cod] = { qta: null, min: null, max: null };
       }
     }
     return {
@@ -741,10 +1023,10 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
   function testoErrore(e, cosa) {
     switch (codiceErrore(e)) {
       case "invalid_argument":
-        if (cosa === "soglie") return "Le soglie possono essere modificate solo da chi ha accesso come Editor.";
-        if (cosa === "articoli") return "Gli articoli possono essere aggiunti o rimossi solo da chi ha accesso come Editor.";
         S.solaLettura = true;
-        return "Il tuo accesso a questa pagina \xE8 in sola lettura. Chiedi al titolare l'accesso come Contributor.";
+        return "Il tuo accesso a questa pagina \xE8 in sola lettura. Chiedi al titolare l'accesso con permesso di modifica.";
+      case "permission_denied":
+        return 'Il database non permette di salvare nel ramo "biancheria": va aggiunta la regola di accesso nella console Firebase.';
       case "quota_exceeded":
         return "L'archivio della piattaforma \xE8 pieno. Elimina qualche inventario vecchio e riprova.";
       case "resource_exhausted":
@@ -780,20 +1062,20 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
   }
   function iconaSalva() {
     const ns = "http://www.w3.org/2000/svg";
-    const svg = document.createElementNS(ns, "svg");
-    svg.setAttribute("viewBox", "0 0 24 24");
-    svg.setAttribute("fill", "none");
-    svg.setAttribute("stroke", "currentColor");
-    svg.setAttribute("stroke-width", "1.6");
-    svg.setAttribute("stroke-linecap", "round");
-    svg.setAttribute("stroke-linejoin", "round");
-    svg.setAttribute("aria-hidden", "true");
+    const svg2 = document.createElementNS(ns, "svg");
+    svg2.setAttribute("viewBox", "0 0 24 24");
+    svg2.setAttribute("fill", "none");
+    svg2.setAttribute("stroke", "currentColor");
+    svg2.setAttribute("stroke-width", "1.6");
+    svg2.setAttribute("stroke-linecap", "round");
+    svg2.setAttribute("stroke-linejoin", "round");
+    svg2.setAttribute("aria-hidden", "true");
     for (const d of ["M6 4h9l3 3v13H6z", "M9 13l2.2 2.2L15.5 11"]) {
       const path = document.createElementNS(ns, "path");
       path.setAttribute("d", d);
-      svg.append(path);
+      svg2.append(path);
     }
-    return svg;
+    return svg2;
   }
   function $(id) {
     const n = document.getElementById(id);
@@ -834,14 +1116,21 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
     for (const b of document.querySelectorAll("[data-vista]")) {
       b.setAttribute("aria-selected", String(b.dataset.vista === S.vista));
     }
+    const salvati = S.inventari.filter((i) => i.hotel === S.hotel).length;
+    $("tab-storico").textContent = salvati ? `Storico (${salvati})` : "Storico";
     $("vista-conteggio").hidden = S.vista !== "conteggio";
     $("vista-storico").hidden = S.vista !== "storico";
     $("vista-soglie").hidden = S.vista !== "soglie";
+    $("vista-andamento").hidden = S.vista !== "andamento";
   }
   function renderBanner() {
     const b = $("banner");
     let testo = "";
-    if (S.dbStato === "assente") {
+    if (S.erroreArchivio) {
+      testo = S.erroreArchivio;
+    } else if (S.archivio?.tipo === "locale") {
+      testo = "Archivio su questo dispositivo: inventari, soglie e storico restano salvati in questo browser e non sono condivisi con altri dispositivi o colleghi.";
+    } else if (S.dbStato === "assente") {
       testo = "Questa vista non \xE8 collegata all'archivio: puoi contare, ma salvataggio e storico non sono disponibili. I numeri restano come bozza su questo dispositivo.";
     } else if (S.solaLettura) {
       testo = "Hai accesso in sola lettura: puoi consultare inventari e soglie, ma non salvarli.";
@@ -928,7 +1217,7 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
   function aggiornaRiga(codice) {
     const riga = document.querySelector(`#vista-conteggio .riga[data-codice="${codice}"]`);
     if (!riga) return;
-    const s = soglieCorrenti(S.hotel)[codice];
+    const s = soglieInventario(S.hotel, S.data)[codice];
     const qta = S.qta[codice] ?? null;
     const v = valuta(qta, s);
     riga.dataset.stato = v.stato;
@@ -962,7 +1251,7 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
     $("filtri").replaceWith(nodoFiltri(contaStati(valutazioni), valutazioni.length));
   }
   function righeVisibili() {
-    const soglie = soglieCorrenti(S.hotel);
+    const soglie = soglieInventario(S.hotel, S.data);
     const q = S.ricerca.trim().toLowerCase();
     return articoliCasa(S.hotel).filter((a) => {
       if (q && !`${a.codice} ${a.descrizione} ${a.descrizioneFornitore}`.toLowerCase().includes(q)) return false;
@@ -971,7 +1260,7 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
     });
   }
   function nodoElencoRighe() {
-    const soglie = soglieCorrenti(S.hotel);
+    const soglie = soglieInventario(S.hotel, S.data);
     const visibili = righeVisibili();
     const elenco = el("div", { class: "elenco", id: "elenco" });
     if (!visibili.length) {
@@ -1017,7 +1306,16 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
       el("div", {}, el("h2", { text: h.nome }), el("p", { class: "sotto-titolo", text: `${h.localita} \xB7 cliente Servizi Italia ${h.codiceCliente}` })),
       el("div", { class: "quando" }, el("p", { class: "data-lunga", text: `Inventario di ${dataLunga(S.data)}` }), nodoStatoDocumento())
     );
-    const avvisoSoglie = S.dbStato === "pronto" && !soglieImpostate ? el(
+    const passato = S.data < oggiISO();
+    const avvisoPassato = passato ? el(
+      "div",
+      { class: "callout callout--info" },
+      el("p", {
+        text: doc ? `Stai correggendo l'inventario di ${dataLunga(S.data)}: le modifiche si salvano da sole e lo stato usa le soglie in vigore quel giorno.` : `Stai inserendo un inventario con data passata (${dataBreve(S.data)}): verr\xE0 salvato nello storico con le soglie attuali.`
+      }),
+      el("button", { type: "button", class: "btn", id: "vai-oggi", text: "Torna a oggi" })
+    ) : null;
+    const avvisoSoglie = !passato && S.dbStato === "pronto" && !soglieImpostate ? el(
       "div",
       { class: "callout" },
       el("p", {
@@ -1057,9 +1355,9 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
       "div",
       { class: "azioni" },
       el("button", { type: "button", class: "btn", id: "copia", text: "Copia riepilogo" }),
-      S.downloads ? el("button", { type: "button", class: "btn", id: "esporta", text: "Esporta CSV" }) : null,
+      S.downloads || MODO === "firebase" ? el("button", { type: "button", class: "btn", id: "esporta", text: "Esporta CSV" }) : null,
       S.modificato ? el("button", { type: "button", class: "btn btn--testo", id: "annulla-modifiche", text: doc ? "Torna al salvato" : "Svuota bozza" }) : null,
-      doc && S.db && !S.solaLettura && !S.confermaElimina ? el("button", { type: "button", class: "btn btn--testo btn--pericolo", id: "elimina", text: "Elimina inventario" }) : null
+      doc && S.archivio && !S.solaLettura && !S.confermaElimina ? el("button", { type: "button", class: "btn btn--testo btn--pericolo", id: "elimina", text: "Elimina inventario" }) : null
     );
     const conferma = S.confermaElimina && doc ? el(
       "div",
@@ -1081,7 +1379,7 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
     if (copiaManuale) copiaManuale.querySelector("textarea").value = S.testoCopia ?? "";
     conFocus(() => {
       $("vista-conteggio").replaceChildren(
-        ...[intestazione, avvisoSoglie, nodoFiltri(conteggi, righe.length), cerca, nodoElencoRighe(), mancaArticolo, nota, azioni, conferma, copiaManuale].filter(
+        ...[intestazione, avvisoPassato, avvisoSoglie, nodoFiltri(conteggi, righe.length), cerca, nodoElencoRighe(), mancaArticolo, nota, azioni, conferma, copiaManuale].filter(
           (n) => n !== null
         )
       );
@@ -1113,7 +1411,8 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
     const intestazione = el(
       "div",
       { class: "intestazione" },
-      el("div", {}, el("h2", { text: `Storico \xB7 ${h.nome}` }), el("p", { class: "sotto-titolo", text: "Lo stato \xE8 calcolato con le soglie in vigore al momento del salvataggio." }))
+      el("div", {}, el("h2", { text: `Storico \xB7 ${h.nome}` }), el("p", { class: "sotto-titolo", text: "Lo stato \xE8 calcolato con le soglie in vigore al momento del salvataggio. Ogni inventario si pu\xF2 riaprire e correggere." })),
+      S.inventari.length ? el("button", { type: "button", class: "btn", id: "esporta-storico", text: "Esporta tutto lo storico" }) : null
     );
     let corpo;
     if (S.dbStato === "assente") {
@@ -1142,7 +1441,7 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
               "div",
               { class: "voce-testa" },
               el("p", { class: "voce-data", text: dataLunga(inv.data) }),
-              el("button", { type: "button", class: "btn", "data-apri": inv.data, text: "Apri" })
+              el("button", { type: "button", class: "btn", "data-apri": inv.data, text: "Apri e correggi" })
             ),
             el(
               "div",
@@ -1160,6 +1459,207 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
       );
     }
     contenitore.replaceChildren(intestazione, corpo);
+  }
+  var NS_SVG = "http://www.w3.org/2000/svg";
+  function svg(tag, attr) {
+    const e = document.createElementNS(NS_SVG, tag);
+    for (const [k, v] of Object.entries(attr)) e.setAttribute(k, String(v));
+    return e;
+  }
+  function nodoGraficoAndamento(punti, descrizione) {
+    const L = 176;
+    const A = 48;
+    const mx = 8;
+    const my = 7;
+    const ultimo = punti[punti.length - 1];
+    const top = Math.max(1, ...punti.map((p) => p.qta), ultimo.max ?? 0, ultimo.min ?? 0) * 1.12;
+    const x = (i) => punti.length === 1 ? L / 2 : mx + i * (L - 2 * mx) / (punti.length - 1);
+    const y = (v) => A - my - v / top * (A - 2 * my);
+    const grafico = svg("svg", {
+      viewBox: `0 0 ${L} ${A}`,
+      class: "grafico",
+      preserveAspectRatio: "xMinYMid meet",
+      role: "img",
+      "aria-label": `${descrizione}: ${punti.map((p) => `${dataBreve(p.data)} ${p.qta} pezzi`).join(", ")}`
+    });
+    grafico.append(svg("line", { x1: 0, x2: L, y1: y(0), y2: y(0), class: "grafico-base" }));
+    if (ultimo.min !== null || ultimo.max !== null) {
+      const alto = y(ultimo.max ?? top);
+      const basso = y(ultimo.min ?? 0);
+      grafico.append(svg("rect", { x: 0, y: alto, width: L, height: Math.max(basso - alto, 1), class: "grafico-banda" }));
+    }
+    if (punti.length > 1) {
+      grafico.append(
+        svg("path", {
+          d: punti.map((p, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(p.qta).toFixed(1)}`).join(" "),
+          class: "grafico-linea"
+        })
+      );
+    }
+    punti.forEach((p, i) => {
+      const gruppo = svg("g", { class: "grafico-punto" });
+      const titolo = svg("title", {});
+      titolo.textContent = `${dataBreve(p.data)}: ${numero(p.qta)} pz \xB7 ${ETICHETTA_STATO[p.stato]}`;
+      gruppo.append(
+        titolo,
+        svg("circle", { cx: x(i), cy: y(p.qta), r: 11, class: "grafico-area" }),
+        svg("circle", { cx: x(i), cy: y(p.qta), r: 4, class: `grafico-segno grafico-segno--${p.stato}` })
+      );
+      grafico.append(gruppo);
+    });
+    return grafico;
+  }
+  function renderAndamento() {
+    const h = hotelPerId(S.hotel);
+    const dal = S.periodo ? mesiFa(S.periodo) : "";
+    const inventari = S.inventari.filter((i) => i.hotel === S.hotel && (!dal || i.data >= dal)).sort((a, b) => a.data.localeCompare(b.data));
+    const periodi = [
+      [3, "3 mesi"],
+      [6, "6 mesi"],
+      [12, "12 mesi"],
+      [0, "Tutto"]
+    ];
+    const intestazione = el(
+      "div",
+      { class: "intestazione" },
+      el(
+        "div",
+        {},
+        el("h2", { text: `Andamento \xB7 ${h.nome}` }),
+        el("p", {
+          class: "sotto-titolo",
+          text: inventari.length ? `${inventari.length} ${inventari.length === 1 ? "inventario" : "inventari"} dal ${dataBreve(inventari[0].data)} al ${dataBreve(
+            inventari[inventari.length - 1].data
+          )}. La fascia verde \xE8 tra minimo e massimo; passa sui punti per i valori.` : "Quantit\xE0 di ogni articolo da un inventario all'altro."
+        })
+      ),
+      S.inventari.length ? el("button", { type: "button", class: "btn", id: "esporta-storico-andamento", text: "Esporta tutto lo storico" }) : null
+    );
+    const filtri = el(
+      "div",
+      { class: "filtri", role: "group", "aria-label": "Periodo" },
+      ...periodi.map(
+        ([mesi, etichetta]) => el("button", {
+          type: "button",
+          class: "filtro",
+          "data-periodo": mesi,
+          "aria-pressed": String(S.periodo === mesi),
+          text: etichetta
+        })
+      )
+    );
+    let corpo;
+    if (S.dbStato === "assente") {
+      corpo = el("p", { class: "vuoto", text: "L'andamento non \xE8 disponibile in questa vista." });
+    } else if (!S.inventariCaricati) {
+      corpo = el("p", { class: "vuoto", text: "Caricamento dello storico\u2026" });
+    } else if (!inventari.length) {
+      corpo = el(
+        "div",
+        { class: "vuoto" },
+        el("p", { text: `Nessun inventario di ${h.nome} nel periodo scelto.` }),
+        el("p", { text: "L'andamento compare man mano che si salvano gli inventari." })
+      );
+    } else {
+      corpo = el("div", {});
+      if (inventari.length === 1) {
+        corpo.append(el("p", { class: "piccolo", text: "Con un solo inventario si vede il punto di partenza: la linea compare dal secondo." }));
+      }
+      const mai = [];
+      for (const cat of ORDINE_CATEGORIE) {
+        const articoli = articoliCasa(S.hotel).filter((a) => a.categoria === cat);
+        const righe = [];
+        for (const a of articoli) {
+          const punti = serieArticolo(inventari, a.codice);
+          if (!punti.length) {
+            mai.push(a.codice);
+            continue;
+          }
+          const ultimo = punti[punti.length - 1];
+          const prima = punti.length > 1 ? punti[punti.length - 2] : null;
+          const diff = prima ? ultimo.qta - prima.qta : null;
+          const testoDiff = prima && diff !== null ? `${diff > 0 ? "+" : diff < 0 ? "\u2212" : "\xB1"}${numero(Math.abs(diff))} dal ${dataBreve(prima.data)}` : `primo conteggio, ${dataBreve(ultimo.data)}`;
+          righe.push(
+            el(
+              "div",
+              { class: "riga-andamento" },
+              el(
+                "div",
+                { class: "art" },
+                el("span", { class: "desc", text: a.descrizione }),
+                el(
+                  "div",
+                  { class: "meta" },
+                  el("span", { class: "codice", text: a.codice }),
+                  el("span", { text: `${punti.length} ${punti.length === 1 ? "conteggio" : "conteggi"}` })
+                )
+              ),
+              el("div", { class: "contenitore-grafico" }, nodoGraficoAndamento(punti, a.descrizione)),
+              el(
+                "div",
+                { class: "ultimo" },
+                el("span", { class: "ultimo-valore", text: `${numero(ultimo.qta)} pz` }),
+                el("span", { class: `pill pill--${ultimo.stato}`, text: ETICHETTA_STATO[ultimo.stato] }),
+                el("span", { class: "differenza", text: testoDiff })
+              )
+            )
+          );
+        }
+        if (righe.length) {
+          corpo.append(el("section", { class: "categoria", "aria-label": ETICHETTA_CATEGORIA[cat] }, el("h3", {}, ETICHETTA_CATEGORIA[cat]), ...righe));
+        }
+      }
+      if (mai.length) {
+        corpo.append(el("p", { class: "piccolo", text: `Mai contati nel periodo: ${mai.join(", ")}.` }));
+      }
+      const colonne = inventari.slice(-8);
+      const codici = codiciInventario(
+        articoliCasa(S.hotel),
+        Object.assign({}, ...colonne.map((i) => i.righe))
+      ).filter((c) => colonne.some((i) => i.righe[c]?.qta != null));
+      const descrizione = (c) => articoliCasa(S.hotel).find((a) => a.codice === c)?.descrizione ?? c;
+      const tabella = el(
+        "table",
+        { class: "tabella-valori" },
+        el(
+          "thead",
+          {},
+          el("tr", {}, el("th", { scope: "col", text: "Articolo" }), ...colonne.map((i) => el("th", { scope: "col", text: dataBreve(i.data).slice(0, 5) })))
+        ),
+        el(
+          "tbody",
+          {},
+          ...codici.map(
+            (c) => el(
+              "tr",
+              {},
+              el("th", { scope: "row" }, el("span", { class: "codice", text: c }), " ", descrizione(c)),
+              ...colonne.map((i) => {
+                const r = i.righe[c];
+                if (!r || r.qta === null) return el("td", { class: "vuota", text: "\u2014" });
+                const st = valuta(r.qta, { min: r.min, max: r.max }).stato;
+                return el(
+                  "td",
+                  { class: `cella cella--${st}`, title: ETICHETTA_STATO[st] },
+                  st === "sotto" || st === "eccesso" ? el("span", { class: "segno-cella", "aria-hidden": "true" }) : null,
+                  numero(r.qta)
+                );
+              })
+            )
+          )
+        )
+      );
+      corpo.append(
+        el(
+          "section",
+          { class: "tabella-sezione", "aria-label": "Tabella dei valori" },
+          el("h3", {}, "Tabella dei valori"),
+          el("p", { class: "piccolo", text: "Ultimi inventari del periodo; il quadratino segnala i valori sotto il minimo (rosso) o in eccesso (ambra)." }),
+          el("div", { class: "scorri" }, tabella)
+        )
+      );
+    }
+    $("vista-andamento").replaceChildren(intestazione, filtri, corpo);
   }
   function nodoModuloArticolo() {
     const m = S.modulo;
@@ -1251,7 +1751,7 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
     const doc = S.soglie[S.hotel];
     if (!S.soglieModificate[S.hotel]) S.campiSoglie[S.hotel] = campiDaSoglie(S.hotel);
     const campi = S.campiSoglie[S.hotel];
-    const gestione = S.puoSoglie && S.db !== null;
+    const gestione = S.puoSoglie && S.archivio !== null;
     const intestazione = el(
       "div",
       { class: "intestazione" },
@@ -1264,7 +1764,7 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
           text: "Il minimo segnala la biancheria che manca, il massimo quella in eccesso. Valgono per tutti i prossimi inventari di questa casa."
         }),
         doc?.aggiornatoIl ? el("p", { class: "piccolo", text: `Soglie modificate l'ultima volta il ${dataOra(doc.aggiornatoIl)}` }) : null,
-        !S.puoSoglie && S.dbStato !== "attesa" ? el("p", { class: "piccolo", text: "Puoi consultare articoli e soglie; per modificarli serve l'accesso come Editor." }) : null
+        !S.puoSoglie && S.dbStato !== "attesa" ? el("p", { class: "piccolo", text: "Puoi consultare articoli e soglie; per modificarli serve un accesso con permesso di modifica." }) : null
       ),
       gestione && !S.moduloAperto ? el("button", { type: "button", class: "btn", id: "apri-modulo", text: "+ Aggiungi articolo" }) : null
     );
@@ -1388,8 +1888,8 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
   }
   async function aggiungiArticolo() {
     if (S.salvando) return;
-    const db = S.db;
-    if (!db) return;
+    const arch = S.archivio;
+    if (!arch) return;
     const m = S.modulo;
     const codiceInserito = m.codice.trim().toUpperCase();
     const descrizione = m.descrizione.trim().replace(/\s+/g, " ");
@@ -1433,7 +1933,7 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
             creatoIl,
             creatoDa: S.userId
           };
-          return conRitento(() => db.doc(`articoli/${hotel}_${codice}`).set(comeRecord(doc)));
+          return conRitento(() => arch.scrivi("articoli", `${hotel}_${codice}`, comeRecord(doc)));
         })
       );
       riuscito = true;
@@ -1453,12 +1953,12 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
     }
   }
   async function rimuoviArticolo(codice) {
-    const db = S.db;
+    const arch = S.archivio;
     const hotel = S.hotel;
     const art = S.aggiunti.find((a) => a.hotel === hotel && a.codice === codice);
-    if (!db || !art) return;
+    if (!arch || !art) return;
     try {
-      await conRitento(() => db.doc(`articoli/${hotel}_${codice}`).delete());
+      await conRitento(() => arch.elimina("articoli", `${hotel}_${codice}`));
       S.daRimuovere = null;
       avvisa("ok", `${art.descrizione} rimosso da ${hotelPerId(hotel).nome}.`);
     } catch (e) {
@@ -1468,6 +1968,10 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
   }
   function renderBarra() {
     const barra = $("barra");
+    if (S.accesso !== "ok") {
+      barra.hidden = true;
+      return;
+    }
     const info = el("div", { class: "info" });
     let pulsante = null;
     if (S.vista === "conteggio") {
@@ -1478,7 +1982,20 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
       if (c.sotto) parti.push(`${c.sotto} sotto minimo`);
       if (c.eccesso) parti.push(`${c.eccesso} in eccesso`);
       info.append(el("span", { class: "riassunto", text: parti.join(" \xB7 ") }));
-      if (S.db && !S.solaLettura) {
+      const doc = inventarioSalvato(S.hotel, S.data);
+      let statoSalvataggio = "";
+      if (S.archivio && !S.solaLettura) {
+        if (S.salvando) statoSalvataggio = "Salvataggio in corso\u2026";
+        else if (S.modificato) statoSalvataggio = "Salvataggio automatico tra un attimo\u2026";
+        else if (doc)
+          statoSalvataggio = `Nello storico \xB7 salvato il ${dataOra(doc.salvatoIl)}${S.archivio.tipo === "locale" ? " su questo dispositivo" : ""}`;
+      }
+      if (statoSalvataggio) {
+        info.append(
+          el("span", { class: `stato-salvataggio${S.modificato || S.salvando ? " stato-salvataggio--attesa" : ""}`, text: statoSalvataggio })
+        );
+      }
+      if (S.archivio && !S.solaLettura) {
         pulsante = el("button", {
           type: "button",
           class: "btn btn--primario",
@@ -1486,7 +2003,7 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
           "aria-busy": S.salvando ? "true" : void 0
         }, iconaSalva(), el("span", { text: S.salvando ? "Salvataggio\u2026" : "Salva inventario" }));
       }
-    } else if (S.vista === "soglie" && S.puoSoglie && S.db) {
+    } else if (S.vista === "soglie" && S.puoSoglie && S.archivio) {
       info.append(
         el("span", {
           class: "riassunto",
@@ -1501,7 +2018,7 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
       }, iconaSalva(), el("span", { text: S.salvando ? "Salvataggio\u2026" : "Salva soglie" }));
     }
     if (S.avviso) info.append(el("span", { class: `avviso avviso--${S.avviso.tono}`, role: "status", text: S.avviso.testo }));
-    const vuota = !pulsante && !S.avviso && S.vista === "storico";
+    const vuota = !pulsante && !S.avviso && (S.vista === "storico" || S.vista === "andamento");
     barra.hidden = vuota || !pulsante && !info.childNodes.length;
     conFocus(() => barra.replaceChildren(el("div", { class: "wrap barra-dentro" }, info, pulsante)));
   }
@@ -1522,59 +2039,245 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
     renderBanner();
     if (S.vista === "conteggio") renderConteggio();
     else if (S.vista === "storico") void renderStorico();
+    else if (S.vista === "andamento") renderAndamento();
     else renderSoglie();
     renderBarra();
   }
-  async function salvaInventario() {
-    if (S.salvando) return;
-    const db = S.db;
-    if (!db) {
-      avvisa("info", "Il salvataggio non \xE8 disponibile in questa vista.");
-      return;
-    }
-    const articoli = articoliCasa(S.hotel);
-    if (!articoli.some((a) => S.qta[a.codice] != null)) {
-      avvisa("errore", "Inserisci almeno una quantit\xE0 prima di salvare.");
-      document.querySelector(".riga .qta")?.focus();
-      return;
-    }
-    const soglie = soglieCorrenti(S.hotel);
+  var timerAuto;
+  var RITARDO_SALVATAGGIO_AUTOMATICO = 1200;
+  function programmaSalvataggio() {
+    window.clearTimeout(timerAuto);
+    if (!S.archivio || S.solaLettura || !S.modificato) return;
+    timerAuto = window.setTimeout(() => void salvaInventario(true), RITARDO_SALVATAGGIO_AUTOMATICO);
+  }
+  function righeInventario(hotel, data, qtaDi) {
+    const soglie = soglieInventario(hotel, data);
     const righe = {};
-    for (const a of articoli) {
+    for (const a of articoliCasa(hotel)) {
       const s = soglie[a.codice];
-      righe[a.codice] = { qta: S.qta[a.codice] ?? null, min: s?.min ?? null, max: s?.max ?? null };
+      righe[a.codice] = { qta: qtaDi(a.codice), min: s?.min ?? null, max: s?.max ?? null };
     }
+    return righe;
+  }
+  function unisciDaArchivio() {
+    const doc = inventarioSalvato(S.hotel, S.data);
+    if (!doc) return;
+    for (const [codice, r] of Object.entries(doc.righe)) if (!S.toccati.has(codice)) S.qta[codice] = r.qta;
+    if (!S.toccati.has("__nota")) S.nota = doc.nota;
+  }
+  async function salvaInventario(automatico = false) {
+    window.clearTimeout(timerAuto);
+    if (S.salvando) {
+      S.salvataggioInSospeso = true;
+      return;
+    }
+    const arch = S.archivio;
+    if (!arch) {
+      if (!automatico) avvisa("info", "Il salvataggio non \xE8 disponibile in questa vista.");
+      return;
+    }
+    if (S.solaLettura) return;
     const { hotel, data } = S;
+    const articoli = articoliCasa(hotel);
+    if (!articoli.some((a) => S.qta[a.codice] != null) && !S.nota.trim()) {
+      if (!automatico) {
+        avvisa("errore", "Inserisci almeno una quantit\xE0 prima di salvare.");
+        document.querySelector("#vista-conteggio .qta")?.focus();
+      }
+      return;
+    }
+    const righeDoc = righeInventario(hotel, data, (codice) => S.qta[codice] ?? null);
     const doc = {
       hotel,
       data,
-      righe,
+      righe: righeDoc,
+      codici: Object.keys(righeDoc).join(","),
       nota: S.nota.trim(),
       salvatoIl: (/* @__PURE__ */ new Date()).toISOString(),
       salvatoDa: S.userId
     };
     const mancanti = articoli.filter((a) => S.qta[a.codice] == null).length;
+    const revisione = S.revisione;
+    const inizio = Date.now();
     S.salvando = true;
     renderBarra();
     try {
-      await conRitento(() => db.doc(`inventari/${hotel}_${data}`).set(comeRecord(doc)));
-      cancellaBozza(hotel, data);
-      if (S.hotel === hotel && S.data === data) S.modificato = false;
-      avvisa(
-        "ok",
-        mancanti ? `Inventario salvato. ${mancanti} articoli risultano non contati.` : "Inventario salvato."
-      );
+      await conRitento(() => arch.scrivi("inventari", `${hotel}_${data}`, comeRecord(doc)));
+      const stessoContesto = S.hotel === hotel && S.data === data;
+      if (stessoContesto && S.revisione === revisione) {
+        S.modificato = false;
+        S.toccati.clear();
+        cancellaBozza(hotel, data);
+      } else if (!stessoContesto) {
+        const bozza = leggiBozza(hotel, data);
+        if (!bozza || bozza.ts <= inizio) locale.rimuovi(chiaveBozza(hotel, data));
+      }
+      if (!automatico) {
+        avvisa(
+          "ok",
+          mancanti ? `Inventario salvato nello storico. ${mancanti} articoli risultano non contati.` : "Inventario salvato nello storico."
+        );
+      } else if (S.avviso?.tono === "errore") {
+        S.avviso = null;
+      }
     } catch (e) {
       avvisa("errore", testoErrore(e, "inventario"));
     } finally {
       S.salvando = false;
+      if (S.salvataggioInSospeso || S.modificato && S.hotel === hotel && S.data === data && S.revisione !== revisione) {
+        S.salvataggioInSospeso = false;
+        programmaSalvataggio();
+      }
       renderTutto();
+    }
+  }
+  async function recuperaBozze() {
+    const arch = S.archivio;
+    if (S.bozzeRecuperate || !arch || S.solaLettura || !S.inventariCaricati || !S.soglieArrivate) return;
+    S.bozzeRecuperate = true;
+    const spostati = await migraArchivioLocale(arch);
+    const trovate = [];
+    try {
+      for (let i = 0; i < localStorage.length; i++) {
+        const m = /^inv-biancheria:bozza:(acadia|hartmann|saslong):(\d{4}-\d{2}-\d{2})$/.exec(localStorage.key(i) ?? "");
+        if (!m || !isHotelId(m[1])) continue;
+        const bozza = leggiBozza(m[1], m[2]);
+        if (bozza) trovate.push({ hotel: m[1], data: m[2], bozza });
+      }
+    } catch {
+      return;
+    }
+    let recuperati = 0;
+    for (const { hotel, data, bozza } of trovate) {
+      if (hotel === S.hotel && data === S.data) continue;
+      const salvato = inventarioSalvato(hotel, data);
+      const righe = righeInventario(hotel, data, (codice) => bozza.qta[codice] ?? salvato?.righe[codice]?.qta ?? null);
+      if (!Object.values(righe).some((r) => r.qta !== null) && !bozza.nota.trim()) {
+        locale.rimuovi(chiaveBozza(hotel, data));
+        continue;
+      }
+      const doc = {
+        hotel,
+        data,
+        righe,
+        codici: Object.keys(righe).join(","),
+        nota: bozza.nota.trim() || salvato?.nota || "",
+        salvatoIl: new Date(bozza.ts || Date.now()).toISOString(),
+        salvatoDa: S.userId
+      };
+      try {
+        await conRitento(() => arch.scrivi("inventari", `${hotel}_${data}`, comeRecord(doc)));
+        locale.rimuovi(chiaveBozza(hotel, data));
+        recuperati++;
+      } catch {
+      }
+    }
+    const totale = recuperati + spostati;
+    if (totale) {
+      avvisa(
+        "ok",
+        totale === 1 ? "Recuperato 1 conteggio rimasto su questo dispositivo: ora \xE8 nello storico condiviso." : `Recuperati ${totale} conteggi rimasti su questo dispositivo: ora sono nello storico condiviso.`
+      );
+    }
+  }
+  async function migraArchivioLocale(arch) {
+    if (arch.tipo === "locale") return 0;
+    const leggiLocale = (c) => {
+      try {
+        const raw = localStorage.getItem(PREFISSO_ARCHIVIO_LOCALE + c);
+        const o = raw ? JSON.parse(raw) : null;
+        return o && typeof o === "object" && !Array.isArray(o) ? o : null;
+      } catch {
+        return null;
+      }
+    };
+    let spostati = 0;
+    const inventari = leggiLocale("inventari");
+    if (inventari) {
+      for (const [id, dati] of Object.entries(inventari)) {
+        const inv = leggiInventario(id, dati);
+        if (!inv || inv.id !== `${inv.hotel}_${inv.data}` || inventarioSalvato(inv.hotel, inv.data)) continue;
+        const doc = {
+          hotel: inv.hotel,
+          data: inv.data,
+          righe: inv.righe,
+          codici: Object.keys(inv.righe).join(","),
+          nota: inv.nota,
+          salvatoIl: inv.salvatoIl,
+          salvatoDa: inv.salvatoDa
+        };
+        try {
+          await conRitento(() => arch.scrivi("inventari", id, comeRecord(doc)));
+          spostati++;
+        } catch {
+          return spostati;
+        }
+      }
+      locale.rimuovi(PREFISSO_ARCHIVIO_LOCALE + "inventari");
+    }
+    const soglie = leggiLocale("soglie");
+    if (soglie) {
+      for (const [id, dati] of Object.entries(soglie)) {
+        const s = leggiSoglie(dati);
+        if (!s || id !== s.hotel || S.soglie[s.hotel]) continue;
+        try {
+          await conRitento(() => arch.scrivi("soglie", id, comeRecord(s)));
+        } catch {
+          return spostati;
+        }
+      }
+      locale.rimuovi(PREFISSO_ARCHIVIO_LOCALE + "soglie");
+    }
+    const articoli = leggiLocale("articoli");
+    if (articoli) {
+      for (const [id, dati] of Object.entries(articoli)) {
+        const a = leggiArticoloAggiunto(id, dati);
+        if (!a || S.aggiunti.some((x) => x.hotel === a.hotel && x.codice === a.codice)) continue;
+        const { aggiunto: _aggiunto, ...doc } = a;
+        try {
+          await conRitento(() => arch.scrivi("articoli", id, comeRecord(doc)));
+        } catch {
+          return spostati;
+        }
+      }
+      locale.rimuovi(PREFISSO_ARCHIVIO_LOCALE + "articoli");
+    }
+    return spostati;
+  }
+  async function aggiornaSoglieInventarioOdierno(arch, hotel, soglie) {
+    const oggi = oggiISO();
+    const odierno = inventarioSalvato(hotel, oggi);
+    if (!odierno) return;
+    if (S.modificato && S.hotel === hotel && S.data === oggi) {
+      programmaSalvataggio();
+      return;
+    }
+    const righe = { ...odierno.righe };
+    for (const a of articoliCasa(hotel)) {
+      righe[a.codice] = {
+        qta: odierno.righe[a.codice]?.qta ?? null,
+        min: soglie[a.codice]?.min ?? null,
+        max: soglie[a.codice]?.max ?? null
+      };
+    }
+    const doc = {
+      hotel,
+      data: oggi,
+      righe,
+      codici: Object.keys(righe).join(","),
+      nota: odierno.nota,
+      salvatoIl: odierno.salvatoIl,
+      salvatoDa: odierno.salvatoDa
+    };
+    try {
+      await conRitento(() => arch.scrivi("inventari", odierno.id, comeRecord(doc)));
+    } catch {
     }
   }
   async function salvaSoglie() {
     if (S.salvando) return;
-    const db = S.db;
-    if (!db) return;
+    const arch = S.archivio;
+    if (!arch) return;
     const hotel = S.hotel;
     const campi = S.campiSoglie[hotel];
     const righe = {};
@@ -1594,9 +2297,10 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
     S.salvando = true;
     renderBarra();
     try {
-      await conRitento(() => db.doc(`soglie/${hotel}`).set(comeRecord(doc)));
+      await conRitento(() => arch.scrivi("soglie", hotel, comeRecord(doc)));
       S.soglieModificate[hotel] = false;
       avvisa("ok", `Soglie salvate per ${hotelPerId(hotel).nome}.`);
+      await aggiornaSoglieInventarioOdierno(arch, hotel, righe);
     } catch (e) {
       avvisa("errore", testoErrore(e, "soglie"));
     } finally {
@@ -1605,11 +2309,13 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
     }
   }
   async function eliminaInventario() {
-    const db = S.db;
+    const arch = S.archivio;
     const doc = inventarioSalvato(S.hotel, S.data);
-    if (!db || !doc) return;
+    if (!arch || !doc) return;
+    window.clearTimeout(timerAuto);
     try {
-      await conRitento(() => db.doc(`inventari/${doc.id}`).delete());
+      await conRitento(() => arch.elimina("inventari", doc.id));
+      S.toccati.clear();
       cancellaBozza(doc.hotel, doc.data);
       S.confermaElimina = false;
       S.qta = {};
@@ -1635,20 +2341,41 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
       area?.select();
     }
   }
-  async function esportaCsv() {
+  async function scaricaFile(filename, data) {
     const dl = S.downloads;
-    if (!dl) return;
-    const h = hotelPerId(S.hotel);
-    try {
-      await dl.save({
-        filename: `inventario-biancheria_${h.id}_${S.data}.csv`,
-        data: csvInventario(h.nome, S.data, righeCorrenti())
-      });
-    } catch (e) {
-      const c = codiceErrore(e);
-      if (c === "declined") return;
-      avvisa("errore", c === "rate_limited" ? "C'\xE8 gi\xE0 un download in attesa di conferma." : "Esportazione non disponibile in questa vista.");
+    if (dl) {
+      try {
+        await dl.save({ filename, data });
+      } catch (e) {
+        const c = codiceErrore(e);
+        if (c === "declined") return;
+        avvisa("errore", c === "rate_limited" ? "C'\xE8 gi\xE0 un download in attesa di conferma." : "Esportazione non disponibile in questa vista.");
+      }
+      return;
     }
+    if (MODO !== "firebase") return;
+    const url = URL.createObjectURL(new Blob([data], { type: "text/csv;charset=utf-8" }));
+    const link = el("a", { href: url, download: filename });
+    document.body.append(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 2e3);
+  }
+  async function esportaCsv() {
+    const h = hotelPerId(S.hotel);
+    await scaricaFile(`inventario-biancheria_${h.id}_${S.data}.csv`, csvInventario(h.nome, S.data, righeCorrenti()));
+  }
+  async function esportaStorico() {
+    if (!S.inventari.length) {
+      avvisa("info", "Lo storico \xE8 ancora vuoto.");
+      return;
+    }
+    const blocchi = S.inventari.map((inventario) => ({
+      nomeHotel: hotelPerId(inventario.hotel).nome,
+      articoli: articoliCasa(inventario.hotel),
+      inventario
+    }));
+    await scaricaFile(`storico-biancheria_${oggiISO()}.csv`, csvStorico(blocchi));
   }
   function pulisciErroreModulo() {
     if (!S.erroreModulo) return;
@@ -1660,7 +2387,10 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
     }
   }
   function cambiaContesto(hotel, data) {
-    if (S.modificato) salvaBozzaOra();
+    if (S.modificato) {
+      salvaBozzaOra();
+      void salvaInventario(true);
+    }
     if (hotel !== S.hotel) {
       S.daRimuovere = null;
       if (!S.modulo.codice.trim() && !S.modulo.descrizione.trim()) S.modulo.case = [hotel];
@@ -1687,7 +2417,7 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
       const vistaBtn = t.closest("[data-vista]");
       if (vistaBtn) {
         const v = vistaBtn.dataset.vista;
-        if (v === "conteggio" || v === "storico" || v === "soglie") {
+        if (v === "conteggio" || v === "storico" || v === "andamento" || v === "soglie") {
           S.vista = v;
           S.avviso = null;
           renderTutto();
@@ -1701,6 +2431,15 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
         S.filtro = S.filtro === f && f !== "tutti" ? "tutti" : f;
         aggiornaFiltri();
         renderElenco();
+        return;
+      }
+      const periodoBtn = t.closest("[data-periodo]");
+      if (periodoBtn) {
+        const mesi = Number(periodoBtn.dataset.periodo);
+        if (mesi === 0 || mesi === 3 || mesi === 6 || mesi === 12) {
+          S.periodo = mesi;
+          renderAndamento();
+        }
         return;
       }
       const apri = t.closest("[data-apri]");
@@ -1749,6 +2488,16 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
           break;
         case "copia":
           void copiaRiepilogo();
+          break;
+        case "esporta-storico":
+        case "esporta-storico-andamento":
+          void esportaStorico();
+          break;
+        case "vai-oggi":
+          cambiaContesto(S.hotel, oggiISO());
+          break;
+        case "esci":
+          void S.sessione?.esci();
           break;
         case "esporta":
           void esportaCsv();
@@ -1804,7 +2553,10 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
       if (t.id === "nota") {
         S.nota = t.value;
         S.modificato = true;
+        S.revisione++;
+        S.toccati.add("__nota");
         salvaBozzaPresto();
+        programmaSalvataggio();
         renderBarra();
         return;
       }
@@ -1833,8 +2585,11 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
       }
       S.qta[codice] = parseIntero(pulito);
       S.modificato = true;
+      S.revisione++;
+      S.toccati.add(codice);
       S.confermaElimina = false;
       salvaBozzaPresto();
+      programmaSalvataggio();
       aggiornaRiga(codice);
       aggiornaFiltri();
       renderBarra();
@@ -1876,76 +2631,163 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
       if (isDataISO(v) && v !== S.data) cambiaContesto(S.hotel, v);
     });
     window.addEventListener("pagehide", () => {
-      if (S.modificato) salvaBozzaOra();
+      if (!S.modificato) return;
+      salvaBozzaOra();
+      void salvaInventario(true);
     });
   }
-  async function avviaArchivio() {
-    const claude = window.claude;
-    if (!claude || typeof claude.use !== "function") {
-      S.dbStato = "assente";
-      renderTutto();
-      return;
-    }
-    const [db, user, downloads] = await Promise.all([claude.use("db"), claude.use("user"), claude.use("downloads")]);
-    S.user = user;
-    S.downloads = downloads;
-    if (user) {
-      const [id, editor, scrittura] = await Promise.all([user.id(), user.canEdit(), user.can("data.write")]);
-      S.userId = id;
-      S.puoSoglie = editor;
-      if (scrittura === false) S.solaLettura = true;
-    }
-    if (!db) {
-      S.dbStato = "assente";
-      renderTutto();
-      return;
-    }
-    S.db = db;
+  function segnalaErroreArchivio(cosa, e) {
+    S.erroreArchivio = e.code === "revoked" ? "L'accesso a questa pagina \xE8 cambiato. Ricarica la pagina." : e.code === "permission_denied" ? 'Il database non permette di leggere il ramo "biancheria": va aggiunta la regola di accesso nella console Firebase.' : `Non riesco a leggere ${cosa} dall'archivio (${e.code}). Ricarica la pagina; se il problema resta, avvisa chi gestisce la piattaforma.`;
+    renderBanner();
+  }
+  function collegaArchivio(arch) {
+    S.archivio = arch;
     S.dbStato = "pronto";
-    db.collection("soglie").onSnapshot(
-      (snap) => {
+    S.scollega.push(arch.ascolta(
+      "soglie",
+      (docs) => {
         const nuove = { acadia: null, hartmann: null, saslong: null };
-        for (const d of snap.docs) {
-          const s = leggiSoglie(d.data());
-          if (s && d.id === s.hotel) nuove[s.hotel] = s;
+        for (const d of docs) {
+          const soglia = leggiSoglie(d.data);
+          if (soglia && d.id === soglia.hotel) nuove[soglia.hotel] = soglia;
         }
         S.soglie = nuove;
+        S.soglieArrivate = true;
         if (S.vista === "conteggio") renderConteggio();
         else if (S.vista === "soglie") renderSoglie();
         renderBarra();
+        void recuperaBozze();
       },
-      () => {
-        S.dbStato = "assente";
-        renderTutto();
-      }
-    );
-    db.collection("articoli").onSnapshot(
-      (snap) => {
-        S.aggiunti = snap.docs.map((d) => leggiArticoloAggiunto(d.id, d.data())).filter((x) => x !== null);
+      (e) => segnalaErroreArchivio("le soglie", e)
+    ));
+    S.scollega.push(arch.ascolta(
+      "articoli",
+      (docs) => {
+        S.aggiunti = docs.map((d) => leggiArticoloAggiunto(d.id, d.data)).filter((x) => x !== null);
         if (S.daRimuovere && !S.aggiunti.some((a) => a.hotel === S.hotel && a.codice === S.daRimuovere)) S.daRimuovere = null;
         if (S.vista === "conteggio") renderConteggio();
         else if (S.vista === "soglie") renderSoglie();
         renderBarra();
         attivaFocusDopo();
       },
-      () => {
-        S.dbStato = "assente";
-        renderTutto();
-      }
-    );
-    db.collection("inventari").orderBy("data", "desc").limit(1e3).onSnapshot(
-      (snap) => {
-        S.inventari = snap.docs.map((d) => leggiInventario(d.id, d.data())).filter((x) => x !== null && x.id === `${x.hotel}_${x.data}`);
+      (e) => segnalaErroreArchivio("gli articoli aggiunti", e)
+    ));
+    S.scollega.push(arch.ascolta(
+      "inventari",
+      (docs) => {
+        S.inventari = docs.map((d) => leggiInventario(d.id, d.data)).filter((x) => x !== null && x.id === `${x.hotel}_${x.data}`);
         S.inventariCaricati = true;
         if (!S.modificato) caricaDaSalvato();
+        else unisciDaArchivio();
         renderTutto();
+        void recuperaBozze();
       },
-      () => {
-        S.dbStato = "assente";
-        renderTutto();
-      }
-    );
+      (e) => segnalaErroreArchivio("lo storico degli inventari", e)
+    ));
+    if (S.modificato) programmaSalvataggio();
     renderTutto();
+  }
+  function scollegaArchivio() {
+    for (const f of S.scollega) f();
+    S.scollega = [];
+    window.clearTimeout(timerAuto);
+    S.archivio = null;
+    S.dbStato = "attesa";
+    S.inventari = [];
+    S.inventariCaricati = false;
+    S.soglie = { acadia: null, hartmann: null, saslong: null };
+    S.soglieArrivate = false;
+    S.aggiunti = [];
+    S.bozzeRecuperate = false;
+    S.erroreArchivio = null;
+  }
+  function renderAccesso() {
+    const dentro = S.accesso === "ok";
+    $("app").hidden = !dentro;
+    $("accesso").hidden = dentro;
+    $("esci").hidden = MODO !== "firebase" || !dentro;
+    if (!dentro) $("barra").hidden = true;
+    const msg = $("messaggio-accesso");
+    msg.textContent = S.erroreAccesso ?? (S.accesso === "verifica" ? "Verifica dell'accesso\u2026" : "");
+    msg.classList.toggle("messaggio-accesso--errore", S.erroreAccesso !== null);
+    const testo = document.querySelector("#accedi span");
+    if (testo) testo.textContent = S.staAccedendo ? "Accesso in corso\u2026" : "Accedi";
+  }
+  async function accedi() {
+    if (S.staAccedendo) return;
+    const campo = $("password-staff");
+    if (!campo.value) {
+      S.erroreAccesso = "Inserisci la password dello staff.";
+      renderAccesso();
+      campo.focus();
+      return;
+    }
+    if (!S.sessione) {
+      S.erroreAccesso = "Accesso non ancora pronto: attendi un attimo e riprova.";
+      renderAccesso();
+      return;
+    }
+    S.staAccedendo = true;
+    S.erroreAccesso = null;
+    renderAccesso();
+    try {
+      await S.sessione.accedi(campo.value);
+      campo.value = "";
+    } catch (e) {
+      S.erroreAccesso = testoErroreAccesso(e);
+      campo.select();
+    } finally {
+      S.staAccedendo = false;
+      renderAccesso();
+    }
+  }
+  async function avviaArchivio() {
+    if (MODO === "firebase") {
+      S.puoSoglie = true;
+      try {
+        S.sessione = await avviaFirebase();
+      } catch {
+        S.accesso = "richiesto";
+        S.erroreAccesso = "Impossibile caricare l'accesso: controlla la connessione e ricarica la pagina.";
+        renderAccesso();
+        return;
+      }
+      S.sessione.quandoCambiaAccesso((arch) => {
+        if (arch) {
+          S.accesso = "ok";
+          S.erroreAccesso = null;
+          if (!S.archivio) collegaArchivio(arch);
+        } else {
+          if (S.modificato) salvaBozzaOra();
+          scollegaArchivio();
+          S.accesso = "richiesto";
+        }
+        renderAccesso();
+        renderTutto();
+        if (!arch) $("password-staff").focus();
+      });
+      return;
+    }
+    const claude = window.claude;
+    if (!claude || typeof claude.use !== "function") return;
+    const [db, user, downloads] = await Promise.all([claude.use("db"), claude.use("user"), claude.use("downloads")]);
+    S.user = user;
+    S.downloads = downloads;
+    S.puoSoglie = true;
+    if (user) {
+      const [id, scrittura] = await Promise.all([user.id(), user.can("data.write")]);
+      S.userId = id;
+      if (scrittura === false) {
+        S.solaLettura = true;
+        S.puoSoglie = false;
+      }
+    }
+    if (!db) {
+      S.dbStato = "assente";
+      renderTutto();
+      return;
+    }
+    collegaArchivio(archivioClaude(db));
   }
   function costruisciSelettoreCase() {
     $("case").replaceChildren(
@@ -1962,6 +2804,11 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
   function avvia() {
     costruisciSelettoreCase();
     collegaEventi();
+    $("form-accesso").addEventListener("submit", (ev) => {
+      ev.preventDefault();
+      void accedi();
+    });
+    renderAccesso();
     caricaContesto();
     renderTutto();
     void avviaArchivio();
@@ -1970,3 +2817,5 @@ textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius
 })();
 
 </script>
+</body>
+</html>
